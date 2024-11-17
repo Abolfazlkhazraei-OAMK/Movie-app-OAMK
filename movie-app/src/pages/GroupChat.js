@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import GroupChatMessage from "../components/GroupChatMessage";
+import { Remarkable } from 'remarkable'
+
+const md = new Remarkable('commonmark');
 
 export default function GroupChat() {
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
 
     const addMessage = () => {
-        let timestamp = new Date()
-        setMessages([...messages,{id: messages.length, text: message, timestamp: timestamp}])
+        let timestamp = new Date().toLocaleString()
+        const renderedHTML = md.render(message)
+        setMessages([...messages,{id: messages.length, text: renderedHTML, timestamp: timestamp}])
     }
 
     /**

@@ -39,6 +39,14 @@
 
 textarea {
   resize: vertical;
+  max-height: 128px;
+  min-height: 30px;
+}
+
+.groupChat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .commentInput {
@@ -50,6 +58,7 @@ textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 70vw;
 }
 
 .chatMessage {
@@ -57,5 +66,10 @@ textarea {
   margin: 10px;
   padding: 5px;
   text-align: left;
-  width: 70%;
+  width: 100%;
+}
+
+.chatMessage .messageTimestamp {
+  text-align: right;
+  color: #606060;
 }
