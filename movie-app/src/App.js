@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+// import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Import Swiper styles
+import 'swiper/css';
+
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Banner from './pages/Banner';
+import Header from './pages/Header';
+import Main from './pages/Main';
+import Footer from './pages/Footer';
+import BackToTopBtn from './components/BackToTopBtn';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  // the scroll position of the window
+  const [scroll, setScroll] = useState(0);
+
+  // constantly listens to the scroll position
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setScroll(window.scrollY);
+    });
+    return () => {
+      window.removeEventListener('scroll', () => {
+        setScroll(window.scrollY);
+      })
+    }
+  }, [scroll])
+
+  return ( 
+    <>
+       <Header scroll={scroll} />
+       <Banner />
+       <Main />
+       <Footer />
+       <BackToTopBtn scroll={scroll} />
+    </>
   );
 }
 
