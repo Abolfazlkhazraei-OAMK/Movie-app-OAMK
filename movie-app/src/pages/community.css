@@ -1,51 +1,40 @@
 .community {
-    background-color: #121212;
+    background: #000000;
     color: #ffffff;
-    padding: 20px;
 }
 
-.section-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #f4511e;
+.community h1 {
+    font-size: 2rem;
+    margin: 1rem 0;
 }
 
-textarea {
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #121212;
+.community p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.btn {
     color: #ffffff;
-    border: 1px solid #121212;
-}
-
-textarea:focus {
-    border: 1px solid #f4511e;
-    outline: none;
-}
-
-button {
-    background-color: #f4511e;
-    border: none;
-    padding: 10px 15px;
-    color: white;
-    border-radius: 5px;
+    padding: 10px 25px;
+    background: #191919;
+    transition: 0.3s;
+    text-transform: uppercase;
     cursor: pointer;
+    border-color: #000000;
 }
 
-button:hover {
+.btn:hover, .btn.active {
     background: var(--primary);
+    border-color: var(--primary);
 }
 
-.review-card {
-    background-color: #121212;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #121212;
+.col-12 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.review-card h5 {
-    font-weight: bold;
-    color: #f4511e;
+.col-12 p {
+    margin: 1rem 0;
+    color: #ffffff;
 }
