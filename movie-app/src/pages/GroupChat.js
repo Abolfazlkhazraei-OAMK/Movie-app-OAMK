@@ -9,6 +9,7 @@ export default function GroupChat() {
     const [messages, setMessages] = useState([])
 
     const addMessage = () => {
+        if(message === '') return
         let timestamp = new Date().toLocaleString()
         const renderedHTML = md.render(message)
         setMessages([...messages,{id: messages.length, text: renderedHTML, timestamp: timestamp}])
@@ -35,6 +36,7 @@ export default function GroupChat() {
                         rows={2}
                         cols={80}
                         maxLength={255}
+                        minLength={1}
                         value={message}
                         onChange={e => setMessage(e.target.value)}
                     />
