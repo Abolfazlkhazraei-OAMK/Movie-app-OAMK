@@ -1,0 +1,40 @@
+.community {
+    background: #000000;
+    color: #ffffff;
+}
+
+.community h1 {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.community p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.btn {
+    color: #ffffff;
+    padding: 10px 25px;
+    background: #191919;
+    transition: 0.3s;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-color: #000000;
+}
+
+.btn:hover, .btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.col-12 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col-12 p {
+    margin: 1rem 0;
+    color: #ffffff;
+}

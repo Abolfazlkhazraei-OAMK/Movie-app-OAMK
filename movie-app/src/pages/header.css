@@ -1,0 +1,118 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 100px;
+    transition: 0.5s;
+    z-index: 10000;
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom: 2px solid var(--primary);
+    border-image: linear-gradient(90deg, transparent, var(--primary), transparent) 30;
+    backdrop-filter: blur(20px);
+    padding: 10px 100px;
+}
+
+.logo {
+    font-family: 'Racing Sans One', cursive;
+    font-size: 35px;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+}
+
+.menu {
+    color: #ffffff;
+    font-size: 2em;
+    transition: 0.5s;
+    display: none;
+    z-index: 10000;
+}
+
+/*-----------------
+# Mobile navigation 
+-----------------*/
+
+.nav-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    z-index: 1000;
+    gap: 20px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-mobile.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav-mobile li {
+    position: relative;
+    list-style: none;
+}
+
+.nav-mobile li a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.nav-mobile li a:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+
+    header.scrolled {
+        padding: 10px 20px;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .login {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+}
