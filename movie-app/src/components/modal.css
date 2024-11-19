@@ -50,3 +50,22 @@
     align-items: center;
     justify-content: center;*/
 }
+
+@media (max-width: 768px) {
+    .movieModal {
+        position: absolute;
+        content: '';
+        top: 100px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .movieModal .movieOverview {
+        padding: 10px;
+    }
+
+    .movieModal .movieOverview h2 {
+        font-size: 1.5rem;
+    }
+}

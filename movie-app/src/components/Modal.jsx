@@ -4,7 +4,7 @@ import './modal.css';
 function Modal({movie, status, toggleModal}) {
   return (
     <div className={`movieModal ${status ? 'active' : undefined}`}>
-        <a href='#' className="modalClose" onClick={toggleModal}>
+        <a className="modalClose" onClick={toggleModal}>
             <ion-icon name="close-outline"></ion-icon>
         </a>
         <div className="movieOverview">

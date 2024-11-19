@@ -53,3 +53,29 @@
     color: #ffffff;
     margin: 20px 0 30px;
 }
+
+.banner .content .button {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .banner .content {
+        margin-top: 0;
+    }
+
+    .movie-title {
+        max-width: 150px;
+    }
+
+    .banner .content h4 {
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    .banner .content p {
+        font-size: 0.7rem;
+        font-weight: 200;
+        line-height: 1em;
+        margin: 10px 0 20px;
+    }
+}

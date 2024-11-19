@@ -1,25 +1,25 @@
 const navListData = [{
     id: 1,
-    name: 'Home',
     link: '/',
+    name: 'Home',
     active: true
 },
 {
     id: 2,
-    name: 'Trending',
     link: '/trending',
+    name: 'Trending',
     active: false
 },
 {
     id: 3,
-    name: 'Showtime',
     link: '/showtime',
+    name: 'Showtime',
     active: false
 },
 {
     id: 4,
-    name: 'Community',
     link: '/community',
+    name: 'Community',
     active: false
 }]
 

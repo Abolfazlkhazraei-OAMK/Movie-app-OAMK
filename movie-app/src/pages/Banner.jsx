@@ -33,16 +33,16 @@ function Banner() {
 
 
   return (
-    <div className="banner">
+    <div className="banner" data-aos='fade-up' data-aos-delay='100'>
         {movieList && movieList.length > 0 && movieList.map((movie) => (
-        <div className="movie">
+        <div key={movie.id} className="movie">
             <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="Background" className={`bgImg ${movie.active ? 'active' : undefined}`}/>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-6 col-md-12">
                         <MovieContent movie={movie} />
                     </div>
-                    <div className="col-lg-6 col-md-12">
+                    <div className="col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-center">
                         <MovieDate movie={movie} />
                         <OverviewBtn movie={movie} />
                     </div>

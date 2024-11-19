@@ -51,3 +51,10 @@
     visibility: visible;
     opacity: 1;
 }
+
+@media (max-width: 768px) {
+    .banner,
+    .banner .movie {
+        padding: 40px 30px 200px;
+    }
+}

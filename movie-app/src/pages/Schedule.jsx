@@ -61,10 +61,10 @@ function Schedule() {
   return (
     <section id="schedule" className="schedule">
       <div className="container-fluid">
-        <div className="row">
+        <div className="row"  data-aos='fade-up' data-aos-delay='100'>
           <h4 className="section-title">Showtimes This Week</h4>
         </div>
-        <div className="row">
+        <div className="row"  data-aos='fade-up' data-aos-delay='300'>
           <div className="filter">
             <select
               id="theatre-select"
@@ -80,7 +80,7 @@ function Schedule() {
             </select>
           </div>
         </div>
-        <div className="row mt-5">
+        <div className="row mt-5"  data-aos='fade-up' data-aos-delay='500'>
           {loading ? (
             <p>Loading showtimes...</p>
           ) : filteredMovies.length > 0 ? (

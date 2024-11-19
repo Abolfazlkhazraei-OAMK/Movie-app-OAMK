@@ -1,11 +1,11 @@
 import React from 'react';
 import './movieSwiper.css';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 // Import required modules

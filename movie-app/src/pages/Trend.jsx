@@ -29,10 +29,10 @@ function Trend() {
   return (
     <section id="trend" className='trend'>
         <div className="container-fluid">
-            <div className="row">
+            <div className="row"  data-aos='fade-up' data-aos-delay='100'>
                 <h4 className="section-title">Trending</h4>
             </div>
-            <div className="row">
+            <div className="row"  data-aos='fade-up' data-aos-delay='300'>
                 <Swiper
                     breakpoints={{
                         320: {

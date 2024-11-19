@@ -74,3 +74,9 @@ section p {
     letter-spacing: 1px;
     margin-bottom: 40px;
 }
+
+@media (max-width: 768px) {
+    section {
+        padding: 120px 30px 20px;
+    }
+}

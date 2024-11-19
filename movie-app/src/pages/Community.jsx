@@ -43,10 +43,10 @@ function Community() {
   return (
     <section id="community" className='community'>
         <div className="container-fluid">
-            <div className="row">
+            <div className="row" data-aos='fade-up' data-aos-delay='100'>
                 <h4 className="section-title">Community Reviews</h4>
             </div>
-            <div className="row mt-5">
+            <div className="row mt-5" data-aos='fade-up' data-aos-delay='300'>
                 <div className="col-12 mb-4">
                     <textarea 
                     className="form-control" 
@@ -65,7 +65,7 @@ function Community() {
                         </div>
                     ))
                 ) : (
-                    <p>No reviews yet. Be the first to your thoughts!</p>
+                    <p>No reviews yet. Be the first to share your thoughts!</p>
                 )}
                 </div>
             </div>

@@ -3,6 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Swiper styles
 import 'swiper/css';
 
+// import AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Banner from './pages/Banner';
@@ -26,6 +30,15 @@ function App() {
       })
     }
   }, [scroll])
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: false
+    })
+  }, []);
 
   return ( 
     <>
