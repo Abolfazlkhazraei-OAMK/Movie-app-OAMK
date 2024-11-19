@@ -78,7 +78,8 @@ body {
 .chatMessage .messageTimestamp {
   text-align: right;
   color: #828282;
-  
+}  
+
 body::-webkit-scrollbar {
     display: none;
 }
