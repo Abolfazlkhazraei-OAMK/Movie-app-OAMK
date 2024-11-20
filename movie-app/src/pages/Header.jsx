@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavListItem from '../components/NavListItem'
 import navListData from '../data/navListData'
 import './header.css'
 import Search from '../components/Search'
 import Button from '../components/Button'
+import { useUser } from '../context/useUser'
+import { useNavigate } from 'react-router-dom';
 
 function Header({scroll}) {
+    const navigate = useNavigate();
+    const { user, signOut } = useUser();
+    useEffect(() => {
+        console.log('Current user:', user); 
+    }, [user]);
+
+    const handleClickLogin = () => {
+        navigate('/signin');
+    };
+
+    const handleClickLogout = () => {
+        signOut(); 
+    };
+
     const [navList, setNavList] = useState(navListData);
     const [open, setOpen] = useState(false);
 
@@ -56,9 +72,17 @@ function Header({scroll}) {
                 }
             </ul>
             <Search />
-            <div className="login">
+            {user?.email ? (
+                <div className="user-info">
+                    {/* <span>Welcome, {user.email}</span> */}
+                    <Button onClick={handleClickLogout} name="Logout" />
+                </div>
+                ) : (
+                <Button onClick={handleClickLogin} icon={<ion-icon name="log-in-outline"></ion-icon>} name="Login" />
+            )}
+            {/* <div className="login">
                 <Button icon={<ion-icon name="log-in-outline"></ion-icon>} name='Login' />
-            </div>
+            </div> */}
         </header>
     </div>
   )
