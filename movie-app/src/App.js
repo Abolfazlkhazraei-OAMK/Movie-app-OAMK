@@ -14,10 +14,12 @@ import Header from './pages/Header';
 import Main from './pages/Main';
 import Footer from './pages/Footer';
 import BackToTopBtn from './components/BackToTopBtn';
+import GroupCreateComponent from './components/GroupCreate';
 
 function App() {
   // the scroll position of the window
   const [scroll, setScroll] = useState(0);
+  const isAuthenticated = Boolean(sessionStorage.getItem('token'));
 
   // constantly listens to the scroll position
   useEffect(() => {
@@ -47,6 +49,7 @@ function App() {
        <Main />
        <Footer />
        <BackToTopBtn scroll={scroll} />
+        <GroupCreateComponent isAuthenticated={isAuthenticated} />
     </>
   );
 }
