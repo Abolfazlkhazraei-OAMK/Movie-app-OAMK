@@ -6,8 +6,8 @@ const navListData = [{
 },
 {
     id: 2,
-    link: '/trending',
-    name: 'Trending',
+    link: '/movies',
+    name: 'Movies',
     active: false
 },
 {

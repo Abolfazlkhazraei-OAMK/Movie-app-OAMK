@@ -7,7 +7,7 @@ function Community() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621');
+            const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=79c7dae27cf47e05e9fe3cbe39e0d621');
             const data = await response.json();
             setCommunity(data);
         } catch (error) {
@@ -19,15 +19,15 @@ function Community() {
         fetchData();
     }, []);
 
-    const handleNewReview = async () => {
+    const handleNewReview = async (movie_id) => {
         if(newReviews.trim() === '') return;
         try {
-            const response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621', {
-                method: 'POST',
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`, {
+                method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({content: newReviews, user: 'Anonymous'})
+                body: JSON.stringify({ content: newReviews, user: 'Anonymous' })
             })
             if(response.ok) {
                 const newEntry = await response.json();

@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import SignIn from './pages/signIn';
-import SignUp from './pages/signUp';
+import SignIn from './components/signIn';
+import SignUp from './components/signUp';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProvider from './context/UserProvider';
+import ErrorPage from './pages/ErrorPage';
+import AllMovies from './components/AllMovies';
 
 const router = createBrowserRouter([
-  // {
-  //   errorElement: <ErrorPage />
-  // },
+ {
+     errorElement: <ErrorPage />
+  },
   {
     path: "/signin",
     element: <SignIn />
@@ -23,8 +25,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/movies",
+    element: <AllMovies />,
   }
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

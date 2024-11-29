@@ -7,7 +7,7 @@ import Button from '../components/Button'
 import { useUser } from '../context/useUser'
 import { useNavigate } from 'react-router-dom';
 
-function Header({scroll}) {
+function Header({scroll, movies}) {
     const navigate = useNavigate();
     const { user, signOut } = useUser();
     useEffect(() => {
@@ -58,10 +58,14 @@ function Header({scroll}) {
                     <NavListItem key={nav.id} nav={nav} navOnClick={handleNavOnClick} />
                 ))}
                 <li>
-                    <Button
-                        icon={<ion-icon name="log-in-outline"></ion-icon>}
-                        name='Login'
-                    />
+                    {user?.email ? (
+                        <div className='login'>
+                            {/* <span>Welcome, {user.email}</span> */}
+                            <Button onClick={handleClickLogout} name="Logout" />
+                        </div>
+                        ) : (
+                        <Button onClick={handleClickLogin} icon={<ion-icon name="log-in-outline"></ion-icon>} name="Login" />
+                    )}
                 </li>
             </ul>
             <ul className='nav'>
@@ -73,16 +77,13 @@ function Header({scroll}) {
             </ul>
             <Search />
             {user?.email ? (
-                <div className="user-info">
+                <div className="login">
                     {/* <span>Welcome, {user.email}</span> */}
                     <Button onClick={handleClickLogout} name="Logout" />
                 </div>
                 ) : (
                 <Button onClick={handleClickLogin} icon={<ion-icon name="log-in-outline"></ion-icon>} name="Login" />
             )}
-            {/* <div className="login">
-                <Button icon={<ion-icon name="log-in-outline"></ion-icon>} name='Login' />
-            </div> */}
         </header>
     </div>
   )
