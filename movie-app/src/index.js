@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProvider from './context/UserProvider';
 import ErrorPage from './pages/ErrorPage';
 import AllMovies from './components/AllMovies';
+import MovieDetail from './components/MovieDetail';
 
 const router = createBrowserRouter([
  {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/movies",
     element: <AllMovies />,
+  },
+  {
+    path: "/movies/:id",
+    element: <MovieDetail />,
   }
 ]);
 

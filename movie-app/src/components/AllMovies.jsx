@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './allMovies.css';
 import Header from '../pages/Header';
 import BackToTopBtn from './BackToTopBtn';
@@ -7,7 +8,6 @@ import Footer from '../pages/Footer';
 function AllMovies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedMovie, setSelectedMovie] = useState(null);
     const [scroll, setScroll] = useState(0);
 
     useEffect(() => {
@@ -36,25 +36,15 @@ function AllMovies() {
         };
     }, []);
 
-    const handleMovieClick = async (movieId) => {
-        try {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`);
-            const data = await response.json();
-            setSelectedMovie(data);
-        } catch (error) {
-            console.log('Error fetching movie details:', error);
-        }
+    const navigate = useNavigate();
+
+    const handleMovieClick = (movieId) => {
+        navigate(`/movies/${movieId}`); // Redirect to the movie detail page
     };
 
     return (
         <div className="container-fluid">
             <section>
-                {selectedMovie && (
-                    <div className="selected-movie">
-                        <h2>{selectedMovie.title} | {selectedMovie.vote_average.toFixed(1)}</h2>
-                        <p>{selectedMovie.overview}</p>
-                    </div>
-                )}
                 <div className='movies'>
                     {loading ? (
                         <p>Loading movies...</p>

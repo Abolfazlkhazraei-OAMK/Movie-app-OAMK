@@ -61,7 +61,7 @@ function Header({scroll, movies}) {
                     {user?.email ? (
                         <div className='login'>
                             {/* <span>Welcome, {user.email}</span> */}
-                            <Button onClick={handleClickLogout} name="Logout" />
+                            <Button onClick={handleClickLogout} icon={<ion-icon name="log-out-outline"></ion-icon>} name="Logout" />
                         </div>
                         ) : (
                         <Button onClick={handleClickLogin} icon={<ion-icon name="log-in-outline"></ion-icon>} name="Login" />
@@ -77,9 +77,9 @@ function Header({scroll, movies}) {
             </ul>
             <Search />
             {user?.email ? (
-                <div className="login">
+                <div className="login-info">
                     {/* <span>Welcome, {user.email}</span> */}
-                    <Button onClick={handleClickLogout} name="Logout" />
+                    <Button onClick={handleClickLogout} icon={<ion-icon name="log-out-outline"></ion-icon>} name="Logout" />
                 </div>
                 ) : (
                 <Button onClick={handleClickLogin} icon={<ion-icon name="log-in-outline"></ion-icon>} name="Login" />

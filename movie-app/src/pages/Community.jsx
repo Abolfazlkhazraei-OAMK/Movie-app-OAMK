@@ -19,11 +19,11 @@ function Community() {
         fetchData();
     }, []);
 
-    const handleNewReview = async (movie_id) => {
+    const handleNewReview = async (id) => {
         if(newReviews.trim() === '') return;
         try {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`, {
-                method: 'GET',
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
