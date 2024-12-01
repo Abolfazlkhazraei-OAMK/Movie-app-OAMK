@@ -1,8 +1,8 @@
 import { hash, compare } from "bcrypt";
 import jwt from "jsonwebtoken";
-const {sign} = jwt
 import { insertUser, selectUserByEmail } from "../models/User1.js";
 import { ApiError } from "../helpers/ApiError1.js";
+const {sign} = jwt
 
 
 const postRegistration = async(req,res,next) => {
@@ -69,4 +69,4 @@ const postLogin = async(req,res,next) => {
     }
 }
 
-export {postRegistration, postLogin}
+export { postRegistration, postLogin }

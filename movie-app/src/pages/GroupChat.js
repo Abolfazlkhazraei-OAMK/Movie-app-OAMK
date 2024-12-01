@@ -10,9 +10,8 @@ export default function GroupChat() {
 
     const addMessage = () => {
         if(message === '') return
-        let timestamp = new Date().toLocaleString()
         const renderedHTML = md.render(message)
-        setMessages([...messages,{id: messages.length, text: renderedHTML, timestamp: timestamp}])
+        setMessages([...messages,{id: messages.length, text: renderedHTML}])
     }
 
     /**
@@ -30,6 +29,7 @@ export default function GroupChat() {
             <div className='commentInput'>
                 <label>
                     <textarea
+                        className='form-control'
                         name='message'
                         form='messageForm'
                         placeholder='Add a comment'
