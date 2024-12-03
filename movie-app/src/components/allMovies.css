@@ -131,3 +131,50 @@ section .selected-movie p {
     text-align: center;
     padding: 10px 0;
 }
+
+section .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+section .pagination button {
+    padding: 10px 20px;
+    border: none;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+section .pagination button:hover {
+    background: #ffffff;
+    color: var(--primary);
+}
+
+section .pagination button.active {
+    background: #ffffff;
+    color: var(--primary);
+}
+
+section .pagination button:disabled {
+    background: #dddddd;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+section .pagination button:disabled:hover {
+    background: #dddddd;
+    color: #ffffff;
+}
+
+section .pagination span {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+}

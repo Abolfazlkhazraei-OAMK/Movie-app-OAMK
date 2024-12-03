@@ -4,25 +4,28 @@ import './community.css';
 function Community() {
     const [community, setCommunity] = useState([]);
     const [newReviews, setNewReviews] = useState('');
+    const id = 550; // Movie ID for Fight Club
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=79c7dae27cf47e05e9fe3cbe39e0d621');
-            const data = await response.json();
-            setCommunity(data);
-        } catch (error) {
-            console.log('error fetching data:', error);
-        }
-    }
+    
 
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`);
+                const data = await response.json();
+                setCommunity(data);
+            } catch (error) {
+                console.log('error fetching data:', error);
+            }
+        }
         fetchData();
-    }, []);
+    }, [id]);
 
-    const handleNewReview = async (id) => {
+    const handleNewReview = async (movie_id) => {
+        console.log(movie_id)
         if(newReviews.trim() === '') return;
         try {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`, {
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +58,7 @@ function Community() {
                     value={newReviews}
                     onChange={(e) => setNewReviews(e.target.value)}
                     ></textarea>
-                    <button className="btn btn-primary mt-2" onClick={handleNewReview}>Post Review</button>
+                    <button className="btn btn-primary mt-2" onClick={() => handleNewReview(id)}>Post Review</button>
                 </div>
                 <div className="col-12">
                     {community && community.length > 0 ? ( community.map((review) => (

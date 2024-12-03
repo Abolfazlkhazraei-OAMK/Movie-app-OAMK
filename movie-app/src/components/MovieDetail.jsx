@@ -41,8 +41,8 @@ function MovieDetail() {
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
         // Handle the form submission
-        // console.log('Review submitted', reviews);
-        // console.log('User rating:', userRating);
+        console.log('Review submitted', reviews);
+        console.log('User rating:', userRating);
         const newReview = {
             text: review,
             rating: userRating,
