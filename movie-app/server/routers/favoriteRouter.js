@@ -8,7 +8,7 @@ favoriteRouter.get('/favorites/:user_id',(req,res,next) => {
     getFavoritesByUserId(req,res,next)
 })
 
-favoriteRouter.post('/favourites/:user_id/add',auth,(req,res,next) => {
+favoriteRouter.post('/favourites/:user_id/add/:movie_id',auth,(req,res,next) => {
     postFavorite(req,res,next)
 })
 

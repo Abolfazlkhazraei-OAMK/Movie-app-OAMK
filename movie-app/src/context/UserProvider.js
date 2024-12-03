@@ -25,7 +25,7 @@ export default function UserProvider({ children }) {
       try {
         const response = await axios.post(url + '/user/login', json, headers);
         const token = response.data.token;
-        setUser(response.data);
+        setUser(response.data)
         sessionStorage.setItem('user', JSON.stringify(response.data));
       } catch (error) {
         setUser({ email: '', password: '', createdAt: '' });

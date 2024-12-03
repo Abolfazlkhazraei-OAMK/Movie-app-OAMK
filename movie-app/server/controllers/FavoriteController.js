@@ -14,11 +14,11 @@ const getFavoritesByUserId = async (req,res,next) => {
 const postFavorite = async (req,res,next) => {
     try {
         const added_at = new Date().toLocaleString()
-        const favorites = await insertFavorite(req.params.user_id,req.body.movie_id,added_at)
+        const favorites = await insertFavorite(req.params.user_id,req.params.movie_id,added_at)
         const favorite = favorites.rows[0]
 
         res.status(200).json({
-            "favorite_id": favorite.id,
+            "favorite_id": favorite.favorite_id,
             "user_id": favorite.user_id,
             "movie_id": favorite.movie_id,
             "added_at": favorite.added_at

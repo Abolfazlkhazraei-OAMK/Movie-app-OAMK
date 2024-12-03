@@ -7,6 +7,7 @@ import SignIn from './pages/signIn';
 import SignUp from './pages/signUp';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProvider from './context/UserProvider';
+import ProfilePage from './pages/ProfilePage';
 
 const router = createBrowserRouter([
   // {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
+  },
+  {
+    path: "/users/:userId",
+    element: <ProfilePage />
   },
   {
     path: "/",
