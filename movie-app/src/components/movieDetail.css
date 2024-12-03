@@ -76,3 +76,7 @@
     background-color: #ffffff;
     color: var(--primary);
 }
+
+.button-container .back-button ion-icon {
+    position: center;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
 import BackToTopBtn from './BackToTopBtn';
@@ -7,6 +7,7 @@ import './movieDetail.css';
 
 function MovieDetail() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [movie, setMovie] = useState(null);
     const [review, setReview] = useState('');
     const [scroll, setScroll] = useState(0);
@@ -81,6 +82,10 @@ function MovieDetail() {
         }
     }
 
+    const handleGoBack = () => {
+        navigate(-1); // Go back to the previous page
+    }
+
     if (!movie) return <p>Loading...</p>;
 
   return (
@@ -90,6 +95,9 @@ function MovieDetail() {
                 <div className="poster-container">
                     <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} className="movie-poster" />
                     <div className="button-container">
+                        <button onClick={handleGoBack} className="back-button">
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </button>
                         <button onClick={toggleFavorite}>
                             {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
                         </button>
