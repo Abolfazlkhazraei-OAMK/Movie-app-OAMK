@@ -23,8 +23,18 @@ export default function ProfilePage() {
             })
     }
 
+    const getFavorites = () => {
+        axios.get(url + `/favorites/${userId}`)
+            .then(response => {
+                setFavorites(response.data)
+            }).catch(error => {
+                alert(error)
+            })
+    }
+
     useEffect(() => {
         getUser()
+        getFavorites()
     })
 
     return (
