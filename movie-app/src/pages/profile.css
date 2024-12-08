@@ -1,39 +1,109 @@
+/* General Container */
 .profile-container {
     max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffffff, #f7f8fa);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.profile-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
 .profile-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    color: #333;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Profile Info Group */
 .profile-info {
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.profile-info:hover {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Label and Value */
 .profile-label {
     font-weight: bold;
+    color: #212529;
+    font-size: 16px;
 }
 
 .profile-value {
-    color: #555;
+    color: #495057;
+    font-size: 16px;
+    font-style: italic;
+    text-align: right;
+    word-wrap: break-word;
 }
 
+/* Loading and Error States */
 .profile-loading {
     font-size: 18px;
     color: #007bff;
     text-align: center;
+    margin: 30px 0;
+    animation: pulse 1.5s infinite;
 }
 
 .profile-error {
     font-size: 18px;
     color: #dc3545;
     text-align: center;
+    margin: 30px 0;
+}
+
+/* Animation for Loading */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+    }
+
+    .profile-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-label, .profile-value {
+        font-size: 14px;
+    }
+
+    .profile-title {
+        font-size: 24px;
+    }
 }
