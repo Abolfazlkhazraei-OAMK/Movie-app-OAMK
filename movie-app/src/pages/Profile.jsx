@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './profile.css';
 
 function Profile() {
     const [profileData, setProfileData] = useState(null); // Store fetched profile data
     const [loading, setLoading] = useState(true); // Loading state
     const [error, setError] = useState(null); // Error state
+
+    const navigate = useNavigate(); // Initialize useNavigate hook
 
     useEffect(() => {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
@@ -76,6 +79,9 @@ function Profile() {
                     {new Date(profileData.createdAt).toLocaleDateString()}
                 </span>
             </p>
+
+            {/* Go Back Button */}
+            <button className="go-back-button" onClick={() => navigate(-1)}>Go Back</button>
         </div>
     );
 }
