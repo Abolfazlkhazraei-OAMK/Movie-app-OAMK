@@ -79,11 +79,11 @@ function Header({scroll, movies}) {
                         return <NavListItem key={nav.id} nav={nav} navOnClick={handleNavOnClick} />
                     })
                 }
-                {/* **New Profile link hardcoded** */}
-                {user?.email && (
-                        <li>
-                            <a onClick={handleProfileClick}>Profile</a>
-                        </li>
+                {/* Render Profile Link only if user is logged in and not already in navList */}
+                {user?.email && !navList.some((nav) => nav.name === 'Profile') && (
+                    <li>
+                        <a onClick={handleProfileClick}>Profile</a>
+                    </li>
                 )}
             </ul>
             <Search />
