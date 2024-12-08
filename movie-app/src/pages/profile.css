@@ -317,3 +317,93 @@
     transform: scale(0.98);
 }
 
+
+
+/* Delete Account Button */
+/* Styles the delete button with a danger theme */
+.delete-account-button {
+    /* Aligns the button */
+    display: inline-block;
+
+    /* Adds spacing from other elements */
+    margin-top: 20px;
+
+    /* Adds padding for a comfortable clickable area */
+    padding: 12px 25px;
+
+    /* Sets a larger font size for better readability */
+    font-size: 16px;
+
+    /* Makes the text bold */
+    font-weight: bold;
+
+    /* Sets the text color to white */
+    color: #fff;
+
+    /* Adds a bold red background to indicate danger */
+    background-color: #dc3545;
+
+    /* Rounds the corners for a smooth button design */
+    border-radius: 8px;
+
+    /* Removes default browser border */
+    border: none;
+
+    /* Changes cursor to pointer to indicate interactivity */
+    cursor: pointer;
+
+    /* Smooth transition for hover and active effects */
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+/* Changes the background color and enlarges the button on hover */
+.delete-account-button:hover {
+    /* Darker red background on hover */
+    background-color: #a71d2a;
+
+    /* Slight scale effect */
+    transform: scale(1.05);
+}
+
+/* Active (Pressed) Effect */
+/* Styles the button when clicked */
+.delete-account-button:active {
+    /* Even darker red background */
+    background-color: #7a0c17;
+
+    /* Shrinks the button slightly */
+    transform: scale(0.95);
+}
+
+/* Success Message */
+/* Styles the success message displayed after deletion */
+.profile-success {
+    /* Sets a medium font size */
+    font-size: 18px;
+
+    /* Changes text color to green for success */
+    color: #28a745;
+
+    /* Centers the text */
+    text-align: center;
+
+    /* Adds spacing above and below the message */
+    margin: 20px 0;
+}
+
+/* Error Message */
+/* Styles error messages related to the deletion process */
+.profile-error {
+    /* Sets a medium font size */
+    font-size: 18px;
+
+    /* Changes text color to red for errors */
+    color: #dc3545;
+
+    /* Centers the text */
+    text-align: center;
+
+    /* Adds spacing above and below the message */
+    margin: 20px 0;
+}
