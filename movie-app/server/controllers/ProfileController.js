@@ -1,4 +1,4 @@
-import { selectUserById, removeUserById } from '../models/ProfileModel.js'; // Add removeUserById import
+import { selectUserById, removeUserById, updateUserById  } from '../models/ProfileModel.js'; // Add removeUserById import
 import { ApiError } from '../helpers/ApiError1.js';
 import jwt from 'jsonwebtoken';
 
@@ -94,4 +94,49 @@ const deleteUser = async (req, res, next) => {
 };
 
 
-export { getUserProfile, deleteUser };
+// Update current user's profile
+const updateUserProfile = async (req, res, next) => {
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return res.status(401).json({ error: 'Unauthorized access. Token missing or invalid.' });
+        }
+
+        const token = authHeader.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.TMDB_ACCESS_TOKEN);
+        const userId = decoded.id;
+
+        const { firstname, lastname } = req.body;
+
+        // Log the incoming payload and user ID
+        console.log('Updating user:', userId, 'Payload:', req.body);
+
+        if (!firstname || !lastname) {
+            return res.status(400).json({ error: 'Firstname and lastname are required.' });
+        }
+
+        const updatedUser = await updateUserById(userId, firstname, lastname);
+
+        if (updatedUser.rowCount === 0) {
+            return res.status(404).json({ error: 'User not found.' });
+        }
+
+        const user = updatedUser.rows[0];
+        return res.status(200).json({
+            id: user.user_id,
+            email: user.email,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            createdAt: user.created_at,
+        });
+    } catch (error) {
+        console.error('Error in updateUserProfile:', error.message); // Log the error
+        next(error);
+    }
+};
+
+
+
+
+
+export { getUserProfile, deleteUser, updateUserProfile };

@@ -63,12 +63,14 @@
 .profile-label {
     font-weight: bold; /* Makes the label bold */
     color: var(--primary); /* Bright orange */
+    margin-left: 20px;
     text-shadow: 0 0 8px var(--primary), 0 0 15px var(--primary); /* Glow effect */
 }
 
 /* Value Styling */
 .profile-value {
     color: white; /* Bright white text */
+    margin-right: 20px;
     font-style: italic; /* Slightly italic for contrast */
 }
 
@@ -229,18 +231,33 @@
 
 /* Edit Button */
 .edit-button {
-    margin: 10px 0px;
-    padding: 10px 20px;
-    background-color: var(--primary);
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: block; /* Makes the button behave as a block-level element */
+    margin: 20px auto; /* Centers the button horizontally */
+    padding: 12px 25px; /* Adds padding for better click area */
+    background-color: var(--primary); /* Bright orange color */
+    color: #000; /* Black text for contrast */
+    border: none; /* Removes default border */
+    border-radius: 8px; /* Smooth corners */
+    font-size: 16px; /* Readable font size */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Centers text inside the button */
+    cursor: pointer; /* Pointer cursor to indicate interactivity */
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); /* Glowing effect */
+    transition: all 0.3s ease; /* Smooth hover transitions */
 }
 
+/* Hover Effect for Edit Button */
 .edit-button:hover {
-    background-color: #ff5100;
+    background-color: #ff5100; /* Slightly brighter orange */
+    color: #fff; /* White text for contrast */
+    box-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary); /* Enhanced glow */
+    transform: scale(1.05); /* Slight scaling effect */
 }
+
+/* Active Effect for Edit Button */
+.edit-button:active {
+    background-color: #e04a00; /* Slightly darker orange when pressed */
+    box-shadow: 0 0 5px var(--primary), 0 0 15px var(--primary); /* Reduced glow */
+    transform: scale(0.95); /* Button appears pressed */
+}
+
