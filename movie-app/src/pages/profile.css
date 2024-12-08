@@ -1,432 +1,185 @@
 /* General Container */
 .profile-container {
-    /* Restricts the width for better readability */
-    max-width: 600px;
-
-    /* Centers the container on the page */
-    margin: 50px auto;
-
-    /* Adds space inside the container for content */
-    padding: 30px;
-
-    /* Rounds the corners for a modern look */
-    border-radius: 12px;
-
-    /* Creates a sleek gradient background */
-    background: linear-gradient(145deg, #101010, #1a1a1a);
-
-    /* Adds outer shadow and subtle inner glow */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.05);
-
-    /* Uses a futuristic font for text */
-    font-family: 'Orbitron', sans-serif;
-
-    /* Sets text color to white for better contrast */
-    color: #fff;
-
-    /* Allows positioning child elements like the glowing effect */
-    position: relative;
-
-    /* Prevents content from overflowing the rounded corners */
-    overflow: hidden;
-
-    /* Keeps this element above any potential overlapping elements */
-    z-index: 1;
+    max-width: 600px; /* Restricts the width for readability */
+    margin: 50px auto; /* Centers the container */
+    padding: 30px; /* Adds space inside the container */
+    border-radius: 12px; /* Rounds the corners */
+    background: #000000; /* Solid black background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 87, 0, 0.3); /* Glowing effect */
+    font-family: 'Racing Sans One', sans-serif; /* Futuristic font */
+    color: white; /* Text color */
+    position: relative; /* For glow effect positioning */
+    overflow: hidden; /* Prevents overflow */
+    z-index: 1; /* Keeps it above other elements */
 }
 
 /* Glow Effect Container */
 .profile-container::before {
-    /* Ensures the glowing background covers the entire container */
     content: '';
-
-    /* Positions the glowing background at the top-left */
     position: absolute;
-
-    /* Sets the width to fully cover the container */
     top: 0;
-
-    /* Sets the height to fully cover the container */
     left: 0;
-
-    /* Matches the container's dimensions */
     width: 100%;
     height: 100%;
-
-    /* Adds a radial gradient for the glowing effect */
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
-
-    /* Places the glow behind the container's content */
+    background: radial-gradient(circle, rgba(255, 87, 0, 0.2), transparent 70%);
     z-index: -1;
-
-    /* Animates the glow to alternate colors */
-    animation: glowing-bg 6s infinite alternate;
+    animation: glowing-bg 6s infinite alternate; /* Animates the glowing effect */
 }
 
 /* Title */
 .profile-title {
-    /* Sets a larger font size for the title */
-    font-size: 32px;
-
-    /* Makes the title bold */
-    font-weight: bold;
-
-    /* Centers the title text */
-    text-align: center;
-
-    /* Adds space below the title */
-    margin-bottom: 25px;
-
-    /* Adds a neon blue glow to the title text */
-    color: #00ffff;
-
-    /* Creates a glowing text effect */
-    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
-
-    /* Adds a pulsing animation to the title glow */
-    animation: pulse-title 3s infinite ease-in-out;
+    font-size: 32px; /* Large font size */
+    font-weight: bold; /* Makes the title bold */
+    text-align: center; /* Centers the text */
+    margin-bottom: 25px; /* Adds space below the title */
+    color: var(--primary); /* Bright orange color */
+    text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary), 0 0 45px var(--primary); /* Glowing effect */
+    animation: pulse-title 3s infinite ease-in-out; /* Pulse animation */
 }
 
 /* Profile Info Group */
 .profile-info {
-    /* Aligns the label and value horizontally */
-    display: flex;
-
-    /* Pushes the label and value to opposite sides */
-    justify-content: space-between;
-
-    /* Vertically centers the content */
-    align-items: center;
-
-    /* Adds space between profile rows */
-    margin-bottom: 15px;
-
-    /* Adds padding inside each row */
-    padding: 10px 0;
-
-    /* Sets a default font size */
-    font-size: 16px;
-
-    /* Changes text color for better contrast */
-    color: #ddd;
-
-    /* Adds a subtle gradient background to rows */
-    background: linear-gradient(145deg, #1a1a1a, #101010);
-
-    /* Creates an inset shadow for depth */
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
-
-    /* Rounds the corners for a polished look */
-    border-radius: 6px;
-
-    /* Adds a hover transition for animations */
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex; /* Aligns label and value horizontally */
+    justify-content: space-between; /* Pushes label and value to opposite sides */
+    align-items: center; /* Vertically centers content */
+    margin-bottom: 15px; /* Adds space between rows */
+    padding: 10px 0; /* Adds padding inside each row */
+    font-size: 16px; /* Default font size */
+    color: #ddd; /* Muted text color */
+    background: #1a1a1a; /* Darker background for contrast */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05); /* Subtle shadow */
+    border-radius: 6px; /* Smooth corners */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
 }
 
 /* Hover effect for Profile Info rows */
 .profile-info:hover {
-    /* Moves the row slightly to the right */
-    transform: translateX(10px);
-
-    /* Changes the background color on hover */
-    background-color: #292929;
-
-    /* Adds a glowing effect around the row */
-    box-shadow: 0 0 15px #00ffff;
+    transform: translateX(10px); /* Slides slightly */
+    background-color: #292929; /* Darker hover effect */
+    box-shadow: 0 0 15px var(--primary); /* Adds glow */
 }
 
 /* Label Styling */
 .profile-label {
-    /* Makes the label text bold */
-    font-weight: bold;
-
-    /* Adds a neon pink color to labels */
-    color: #ff007f;
-
-    /* Creates a glowing effect for labels */
-    text-shadow: 0 0 8px #ff007f, 0 0 15px #ff007f;
+    font-weight: bold; /* Makes the label bold */
+    margin-left: 20px;
+    color: var(--primary); /* Bright orange */
+    text-shadow: 0 0 8px var(--primary), 0 0 15px var(--primary); /* Glow effect */
 }
 
 /* Value Styling */
 .profile-value {
-    /* Sets the value text color to neon blue */
-    color: #00ffff;
+    color: white; /* Bright white text */
+    margin-right: 20px;
+    font-style: italic; /* Slightly italic for contrast */
+}
 
-    /* Creates a glowing effect for values */
-    text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+/* Buttons Container */
+.buttons-container {
+    display: flex; /* Aligns buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    justify-content: center; /* Centers the buttons */
+    margin-top: 30px; /* Space above container */
+}
 
-    /* Makes the value text italic */
-    font-style: italic;
+/* Go Back Button */
+.go-back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: black; /* Matches theme */
+    border: 2px solid var(--primary); /* Bright border */
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Go Back Button */
+.go-back-button:hover {
+    background-color: var(--primary); /* Bright orange background */
+    color: black; /* Black text for contrast */
+}
+
+/* Delete Account Button */
+.delete-account-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: var(--primary); /* Bright orange for danger */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Delete Account Button */
+.delete-account-button:hover {
+    background-color: white; /* Bright white background */
+    color: var(--primary); /* Bright orange text */
 }
 
 /* Loading and Error States */
 .profile-loading, .profile-error {
-    /* Sets the font size for loading/error messages */
     font-size: 18px;
-
-    /* Centers the messages */
     text-align: center;
-
-    /* Adds space above and below the messages */
     margin: 30px 0;
-
-    /* Animates the text to alternate colors */
     animation: glowing-text 2s infinite ease-in-out;
 }
 
 /* Loading State Styling */
 .profile-loading {
-    /* Sets the loading message color to neon blue */
-    color: #00ffff;
+    color: var(--primary); /* Bright orange for loading */
 }
 
 /* Error State Styling */
 .profile-error {
-    /* Sets the error message color to neon pink */
-    color: #ff007f;
+    color: red; /* Bright red for errors */
 }
 
-/* Glowing Background Animation */
+/* Success Message */
+.profile-success {
+    font-size: 18px;
+    color: green; /* Bright green for success */
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Animations */
 @keyframes glowing-bg {
-    /* Starts with a blue radial gradient */
     0% {
-        background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent 70%);
+        background: radial-gradient(circle, rgba(255, 87, 0, 0.2), transparent 70%);
     }
-
-    /* Transitions to a pink radial gradient */
     100% {
-        background: radial-gradient(circle, rgba(255, 0, 127, 0.2), transparent 70%);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
     }
 }
 
-/* Pulsing Title Animation */
 @keyframes pulse-title {
-    /* Default glow state */
     0%, 100% {
-        text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+        text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary), 0 0 45px var(--primary);
     }
-
-    /* Increases the intensity of the glow */
     50% {
-        text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 75px #00ffff;
+        text-shadow: 0 0 25px var(--primary), 0 0 50px var(--primary), 0 0 75px var(--primary);
     }
 }
 
-/* Glowing Text Animation */
-@keyframes glowing-text {
-    /* Starts with neon blue */
-    0%, 100% {
-        color: #00ffff;
-    }
-
-    /* Transitions to neon pink */
-    50% {
-        color: #ff007f;
-    }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    /* Adjusts padding for smaller screens */
     .profile-container {
         padding: 20px;
     }
 
-    /* Stacks label and value vertically on smaller screens */
     .profile-info {
         flex-direction: column;
         align-items: flex-start;
-        padding: 15px;
     }
 
-    /* Reduces font size for labels and values */
-    .profile-label, .profile-value {
-        font-size: 14px;
-    }
-
-    /* Reduces title font size for smaller screens */
     .profile-title {
         font-size: 28px;
     }
-}
-
-
-
-
-
-
-
-/* Buttons Container */
-/* Wraps the Go Back and Delete Account buttons in a flex container */
-.buttons-container {
-    /* Aligns the buttons horizontally */
-    display: flex;
-
-    /* Adds spacing between the buttons */
-    gap: 20px;
-
-    /* Centers the buttons horizontally */
-    justify-content: center;
-
-    /* Adds spacing above the buttons container */
-    margin-top: 30px;
-}
-
-
-
-
-/* Go Back Button */
-/* Styles the Go Back button to match the futuristic theme */
-.go-back-button {
-    /* Centers the button */
-    display: inline-block;
-
-    /* Adds spacing between the button and other elements */
-    margin-top: 20px;
-
-    /* Adds padding for a better clickable area */
-    padding: 10px 20px;
-
-    /* Sets a larger font size for visibility */
-    font-size: 16px;
-
-    /* Adds bold weight for emphasis */
-    font-weight: bold;
-
-    /* Changes the text color to white */
-    color: #fff;
-
-    /* Adds a gradient background matching the profile container */
-    background: linear-gradient(145deg, #1a1a1a, #101010);
-
-    /* Rounds the corners for a smooth look */
-    border-radius: 8px;
-
-    /* Removes the default button border */
-    border: none;
-
-    /* Adds a glowing outline effect */
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
-
-    /* Makes the cursor a pointer to indicate interactivity */
-    cursor: pointer;
-
-    /* Smooth hover transitions */
-    transition: all 0.3s ease;
-}
-
-/* Hover Effect for Go Back Button */
-/* Adds an interactive hover glow */
-.go-back-button:hover {
-    /* Changes background to a brighter glow */
-    background: linear-gradient(145deg, #292929, #1f1f1f);
-
-    /* Increases the glow intensity */
-    box-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.8);
-
-    /* Slightly scales up the button for emphasis */
-    transform: scale(1.05);
-}
-
-/* Active Effect for Go Back Button */
-/* Adds a pressed-down effect */
-.go-back-button:active {
-    /* Darkens the background to show the button is pressed */
-    background: linear-gradient(145deg, #101010, #0d0d0d);
-
-    /* Shrinks the glow slightly */
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
-
-    /* Scales down the button */
-    transform: scale(0.98);
-}
-
-
-
-/* Delete Account Button */
-/* Styles the delete button with a danger theme */
-.delete-account-button {
-    /* Aligns the button */
-    display: inline-block;
-
-    /* Adds spacing from other elements */
-    margin-top: 20px;
-
-    /* Adds padding for a comfortable clickable area */
-    padding: 12px 25px;
-
-    /* Sets a larger font size for better readability */
-    font-size: 16px;
-
-    /* Makes the text bold */
-    font-weight: bold;
-
-    /* Sets the text color to white */
-    color: #fff;
-
-    /* Adds a bold red background to indicate danger */
-    background-color: #dc3545;
-
-    /* Rounds the corners for a smooth button design */
-    border-radius: 8px;
-
-    /* Removes default browser border */
-    border: none;
-
-    /* Changes cursor to pointer to indicate interactivity */
-    cursor: pointer;
-
-    /* Smooth transition for hover and active effects */
-    transition: all 0.3s ease;
-}
-
-/* Hover Effect */
-/* Changes the background color and enlarges the button on hover */
-.delete-account-button:hover {
-    /* Darker red background on hover */
-    background-color: #a71d2a;
-
-    /* Slight scale effect */
-    transform: scale(1.05);
-}
-
-/* Active (Pressed) Effect */
-/* Styles the button when clicked */
-.delete-account-button:active {
-    /* Even darker red background */
-    background-color: #7a0c17;
-
-    /* Shrinks the button slightly */
-    transform: scale(0.95);
-}
-
-/* Success Message */
-/* Styles the success message displayed after deletion */
-.profile-success {
-    /* Sets a medium font size */
-    font-size: 18px;
-
-    /* Changes text color to green for success */
-    color: #28a745;
-
-    /* Centers the text */
-    text-align: center;
-
-    /* Adds spacing above and below the message */
-    margin: 20px 0;
-}
-
-/* Error Message */
-/* Styles error messages related to the deletion process */
-.profile-error {
-    /* Sets a medium font size */
-    font-size: 18px;
-
-    /* Changes text color to red for errors */
-    color: #dc3545;
-
-    /* Centers the text */
-    text-align: center;
-
-    /* Adds spacing above and below the message */
-    margin: 20px 0;
 }
