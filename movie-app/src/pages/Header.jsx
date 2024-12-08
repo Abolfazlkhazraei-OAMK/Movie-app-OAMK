@@ -22,6 +22,11 @@ function Header({scroll, movies}) {
         signOut(); 
     };
 
+    // **New function to navigate to Profile**
+    const handleProfileClick = () => {
+        navigate('/profile');
+    };
+
     const [navList, setNavList] = useState(navListData);
     const [open, setOpen] = useState(false);
 
@@ -74,6 +79,12 @@ function Header({scroll, movies}) {
                         return <NavListItem key={nav.id} nav={nav} navOnClick={handleNavOnClick} />
                     })
                 }
+                {/* **New Profile link hardcoded** */}
+                {user?.email && (
+                        <li>
+                            <a onClick={handleProfileClick}>Profile</a>
+                        </li>
+                )}
             </ul>
             <Search />
             {user?.email ? (

@@ -11,9 +11,8 @@ const pool = new Pool({
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
-    ssl: {
-        rejectUnauthorized: false
-    }
+    //Modified the db.js to handle the SSL setting dynamically:
+    ssl: process.env.DB_SSL === 'require' ? { rejectUnauthorized: false } : false, // Dynamic SSL
 });
 
 pool.connect()

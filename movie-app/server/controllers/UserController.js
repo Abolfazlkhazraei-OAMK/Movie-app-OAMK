@@ -62,7 +62,7 @@ const postLogin = async(req,res,next) => {
             return next(new ApiError(invalid_credentials_message, 401));
         }
         // const token = sign(req.body.email, process.env.JWT_SECRET_KEY)
-        const token = sign(req.body.email, process.env.TMDB_ACCESS_TOKEN)
+        const token = sign({ id: user.user_id, email: user.email }, process.env.TMDB_ACCESS_TOKEN)
         return res.status(200).json(createUserObject(user.id,user.email, user.firstname, user.lastname, user.createdAt, token))
     } catch (error) {
         return next(error)

@@ -21,6 +21,13 @@ const navListData = [{
     link: '/community',
     name: 'Community',
     active: false
+},
+{
+    //Newly added part
+    id: 5,
+    link: '/profile',
+    name: 'Profile',
+    active: false
 }]
 
 export default navListData;
