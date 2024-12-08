@@ -119,16 +119,20 @@ function Profile() {
                     {new Date(profileData.createdAt).toLocaleDateString()}
                 </span>
             </p>
-
+    
             {deleteError && <p className="profile-error">Error: {deleteError}</p>}
-
-            {/* Go Back Button */}
-            <button className="go-back-button" onClick={() => navigate(-1)}>Go Back</button>
-
-            {/* Delete Account Button */}
-            <button className="delete-account-button" onClick={handleDeleteUser}>Delete Account</button>
+    
+            {/* Buttons Container */}
+            <div className="buttons-container">
+                {/* Go Back Button */}
+                <button className="go-back-button" onClick={() => navigate(-1)}>Go Back</button>
+    
+                {/* Delete Account Button */}
+                <button className="delete-account-button" onClick={handleDeleteUser}>Delete Account</button>
+            </div>
         </div>
     );
+    
 }
 
 export default Profile;

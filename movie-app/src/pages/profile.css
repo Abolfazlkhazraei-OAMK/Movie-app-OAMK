@@ -251,6 +251,29 @@
 
 
 
+
+
+
+
+/* Buttons Container */
+/* Wraps the Go Back and Delete Account buttons in a flex container */
+.buttons-container {
+    /* Aligns the buttons horizontally */
+    display: flex;
+
+    /* Adds spacing between the buttons */
+    gap: 20px;
+
+    /* Centers the buttons horizontally */
+    justify-content: center;
+
+    /* Adds spacing above the buttons container */
+    margin-top: 30px;
+}
+
+
+
+
 /* Go Back Button */
 /* Styles the Go Back button to match the futuristic theme */
 .go-back-button {
