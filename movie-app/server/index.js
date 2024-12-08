@@ -33,17 +33,6 @@ app.use((err,req,res,next) => {
     res.status(statusCode).json({error: err.message})
 })
 
-// Test the connection to the database
-(async () => {
-    try {
-        await pool.query("SELECT NOW()")
-        console.log("Connected to the database")
-    } catch (error) {
-        console.error("Error connecting to the database:", error)
-        process.exit(1)
-    }
-})();
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
