@@ -47,7 +47,7 @@ function Profile() {
 
     const handleDeleteUser = () => {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
-
+    
         if (userFromSession && userFromSession.token) {
             fetch(`${process.env.REACT_APP_API_URL}/profile`, {
                 method: 'DELETE',
@@ -63,13 +63,18 @@ function Profile() {
                     return response.json();
                 })
                 .then(() => {
-                    sessionStorage.removeItem('user');
+                    sessionStorage.removeItem('user'); // Clear user data from session storage
+                    console.log('User data removed from session storage'); // Confirm removal
                     setDeleteSuccess(true);
                     alert('Your profile has been successfully deleted!');
-                    navigate('/');
+                    navigate('/'); // Redirect to the home page
+                    setTimeout(() => {
+                        window.location.reload(); // Force page refresh after redirect
+                    }, 100); // Add a short delay to ensure navigation is complete
                 })
                 .catch((err) => {
                     setDeleteError(err.message);
+                    console.error('Error deleting user:', err.message); // Log any errors
                 });
         }
     };
