@@ -62,9 +62,8 @@ function Profile() {
                 .then(() => {
                     sessionStorage.removeItem('user'); // Remove user data from session storage
                     setDeleteSuccess(true); // Set success state
-                    setTimeout(() => {
-                        navigate('/'); // Redirect to home page after successful deletion
-                    }, 2000);
+                    alert('Your profile has been successfully deleted!'); // Show success alert
+                    navigate('/'); // Redirect immediately after successful deletion
                 })
                 .catch((err) => {
                     setDeleteError(err.message); // Set error state for deletion
@@ -119,20 +118,19 @@ function Profile() {
                     {new Date(profileData.createdAt).toLocaleDateString()}
                 </span>
             </p>
-    
+
             {deleteError && <p className="profile-error">Error: {deleteError}</p>}
-    
+
             {/* Buttons Container */}
             <div className="buttons-container">
                 {/* Go Back Button */}
                 <button className="go-back-button" onClick={() => navigate(-1)}>Go Back</button>
-    
+
                 {/* Delete Account Button */}
                 <button className="delete-account-button" onClick={handleDeleteUser}>Delete Account</button>
             </div>
         </div>
     );
-    
 }
 
 export default Profile;
