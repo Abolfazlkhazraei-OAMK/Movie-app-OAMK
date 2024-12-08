@@ -1,115 +1,224 @@
 /* General Container */
 .profile-container {
+    /* Restricts the width for better readability */
     max-width: 600px;
+
+    /* Centers the container on the page */
     margin: 50px auto;
+
+    /* Adds space inside the container for content */
     padding: 30px;
+
+    /* Rounds the corners for a modern look */
     border-radius: 12px;
+
+    /* Creates a sleek gradient background */
     background: linear-gradient(145deg, #101010, #1a1a1a);
+
+    /* Adds outer shadow and subtle inner glow */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.05);
-    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+
+    /* Uses a futuristic font for text */
+    font-family: 'Orbitron', sans-serif;
+
+    /* Sets text color to white for better contrast */
     color: #fff;
+
+    /* Allows positioning child elements like the glowing effect */
     position: relative;
+
+    /* Prevents content from overflowing the rounded corners */
     overflow: hidden;
+
+    /* Keeps this element above any potential overlapping elements */
     z-index: 1;
 }
 
 /* Glow Effect Container */
 .profile-container::before {
+    /* Ensures the glowing background covers the entire container */
     content: '';
+
+    /* Positions the glowing background at the top-left */
     position: absolute;
+
+    /* Sets the width to fully cover the container */
     top: 0;
+
+    /* Sets the height to fully cover the container */
     left: 0;
+
+    /* Matches the container's dimensions */
     width: 100%;
     height: 100%;
+
+    /* Adds a radial gradient for the glowing effect */
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+
+    /* Places the glow behind the container's content */
     z-index: -1;
+
+    /* Animates the glow to alternate colors */
     animation: glowing-bg 6s infinite alternate;
 }
 
 /* Title */
 .profile-title {
+    /* Sets a larger font size for the title */
     font-size: 32px;
+
+    /* Makes the title bold */
     font-weight: bold;
+
+    /* Centers the title text */
     text-align: center;
+
+    /* Adds space below the title */
     margin-bottom: 25px;
-    color: #00ffff; /* Neon glow color */
+
+    /* Adds a neon blue glow to the title text */
+    color: #00ffff;
+
+    /* Creates a glowing text effect */
     text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+
+    /* Adds a pulsing animation to the title glow */
     animation: pulse-title 3s infinite ease-in-out;
 }
 
 /* Profile Info Group */
 .profile-info {
+    /* Aligns the label and value horizontally */
     display: flex;
+
+    /* Pushes the label and value to opposite sides */
     justify-content: space-between;
+
+    /* Vertically centers the content */
     align-items: center;
+
+    /* Adds space between profile rows */
     margin-bottom: 15px;
+
+    /* Adds padding inside each row */
     padding: 10px 0;
+
+    /* Sets a default font size */
     font-size: 16px;
+
+    /* Changes text color for better contrast */
     color: #ddd;
+
+    /* Adds a subtle gradient background to rows */
     background: linear-gradient(145deg, #1a1a1a, #101010);
+
+    /* Creates an inset shadow for depth */
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+
+    /* Rounds the corners for a polished look */
     border-radius: 6px;
+
+    /* Adds a hover transition for animations */
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+/* Hover effect for Profile Info rows */
 .profile-info:hover {
+    /* Moves the row slightly to the right */
     transform: translateX(10px);
+
+    /* Changes the background color on hover */
     background-color: #292929;
+
+    /* Adds a glowing effect around the row */
     box-shadow: 0 0 15px #00ffff;
 }
 
-/* Label and Value */
+/* Label Styling */
 .profile-label {
+    /* Makes the label text bold */
     font-weight: bold;
-    color: #ff007f; /* Neon pink */
+
+    /* Adds a neon pink color to labels */
+    color: #ff007f;
+
+    /* Creates a glowing effect for labels */
     text-shadow: 0 0 8px #ff007f, 0 0 15px #ff007f;
 }
 
+/* Value Styling */
 .profile-value {
-    color: #00ffff; /* Neon blue */
+    /* Sets the value text color to neon blue */
+    color: #00ffff;
+
+    /* Creates a glowing effect for values */
     text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+
+    /* Makes the value text italic */
     font-style: italic;
 }
 
 /* Loading and Error States */
 .profile-loading, .profile-error {
+    /* Sets the font size for loading/error messages */
     font-size: 18px;
+
+    /* Centers the messages */
     text-align: center;
+
+    /* Adds space above and below the messages */
     margin: 30px 0;
+
+    /* Animates the text to alternate colors */
     animation: glowing-text 2s infinite ease-in-out;
 }
 
+/* Loading State Styling */
 .profile-loading {
+    /* Sets the loading message color to neon blue */
     color: #00ffff;
 }
 
+/* Error State Styling */
 .profile-error {
+    /* Sets the error message color to neon pink */
     color: #ff007f;
 }
 
-/* Animations */
+/* Glowing Background Animation */
 @keyframes glowing-bg {
+    /* Starts with a blue radial gradient */
     0% {
         background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent 70%);
     }
+
+    /* Transitions to a pink radial gradient */
     100% {
         background: radial-gradient(circle, rgba(255, 0, 127, 0.2), transparent 70%);
     }
 }
 
+/* Pulsing Title Animation */
 @keyframes pulse-title {
+    /* Default glow state */
     0%, 100% {
         text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
     }
+
+    /* Increases the intensity of the glow */
     50% {
         text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 75px #00ffff;
     }
 }
 
+/* Glowing Text Animation */
 @keyframes glowing-text {
+    /* Starts with neon blue */
     0%, 100% {
         color: #00ffff;
     }
+
+    /* Transitions to neon pink */
     50% {
         color: #ff007f;
     }
@@ -117,20 +226,24 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Adjusts padding for smaller screens */
     .profile-container {
         padding: 20px;
     }
 
+    /* Stacks label and value vertically on smaller screens */
     .profile-info {
         flex-direction: column;
         align-items: flex-start;
         padding: 15px;
     }
 
+    /* Reduces font size for labels and values */
     .profile-label, .profile-value {
         font-size: 14px;
     }
 
+    /* Reduces title font size for smaller screens */
     .profile-title {
         font-size: 28px;
     }
