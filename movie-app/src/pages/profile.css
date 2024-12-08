@@ -62,7 +62,6 @@
 /* Label Styling */
 .profile-label {
     font-weight: bold; /* Makes the label bold */
-    margin-left: 20px;
     color: var(--primary); /* Bright orange */
     text-shadow: 0 0 8px var(--primary), 0 0 15px var(--primary); /* Glow effect */
 }
@@ -70,7 +69,6 @@
 /* Value Styling */
 .profile-value {
     color: white; /* Bright white text */
-    margin-right: 20px;
     font-style: italic; /* Slightly italic for contrast */
 }
 
@@ -182,4 +180,67 @@
     .profile-title {
         font-size: 28px;
     }
+}
+
+
+
+/* Profile Input */
+.profile-input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    background-color: #000;
+    color: white;
+    font-size: 16px;
+    font-family: 'Racing Sans One', sans-serif;
+}
+
+/* Save and Cancel Buttons */
+.save-button, .cancel-button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-button {
+    background-color: var(--primary);
+    color: #000;
+}
+
+.cancel-button {
+    background-color: #555;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #ff5100;
+}
+
+.cancel-button:hover {
+    background-color: #777;
+}
+
+/* Edit Button */
+.edit-button {
+    margin: 10px 0px;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: #ff5100;
 }
