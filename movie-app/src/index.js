@@ -10,6 +10,9 @@ import UserProvider from './context/UserProvider';
 import ErrorPage from './pages/ErrorPage';
 import AllMovies from './components/AllMovies';
 import MovieDetail from './components/MovieDetail';
+import Showtime from './components/Showtime';
+//import Community from './components/Community';
+import GroupCreateComponent from './components/GroupCreate';
 
 const router = createBrowserRouter([
  {
@@ -34,6 +37,14 @@ const router = createBrowserRouter([
   {
     path: "/movies/:id",
     element: <MovieDetail />,
+  },
+  {
+    path: "/showtime",
+    element: <Showtime />,
+  },
+  {
+    path: "/community",
+    element: <GroupCreateComponent />,
   }
 ]);
 

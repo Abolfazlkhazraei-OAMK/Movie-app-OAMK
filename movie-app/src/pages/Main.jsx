@@ -2,14 +2,15 @@ import React from 'react';
 import './main.css';
 import Schedule from './Schedule';
 import Trend from './Trend';
-import Community from './Community';
+import Blog from './Blog';
+
 
 function Main() {
   return (
     <main>
         <Schedule />
         <Trend />
-        <Community />
+        <Blog />
     </main>
   )
 }

@@ -1,6 +1,6 @@
 import Group from '../models/GroupCreate.js';
 import { ApiError } from '../helpers/ApiError1.js';
-import jwt from 'jsonwebtoken';
+
 
 export const createGroup = async (req, res, next) => {
     const { name, description } = req.body;

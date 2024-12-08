@@ -1,0 +1,57 @@
+.showtime .timing {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 10px;
+}
+
+.showtime select {
+    color: #ffffff;
+    padding: 10px 25px;
+    background: #191919;
+    transition: 0.3s;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.showtime select:hover,
+.showtime select.active {
+    background: var(--primary);
+}
+
+.showtime .tv-shows .card {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #191919;
+    transition: transform 0.3s;
+}
+
+.showtime .tv-shows .card:hover {
+    transform: scale(1.02);
+}
+
+.showtime .tv-shows .card img {
+    width: 100%;
+    height: auto;
+}
+
+.showtime .tv-shows .card-body {
+    padding: 20px;
+}
+
+.showtime .tv-shows .card-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.showtime .tv-shows .card p {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}

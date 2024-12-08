@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './community.css';
+import Header from '../pages/Header';
+import BackToTopBtn from './BackToTopBtn';
+import Footer from '../pages/Footer';
 
 function Community() {
     const [community, setCommunity] = useState([]);
     const [newReviews, setNewReviews] = useState('');
+    const [scroll, setScroll] = useState(0);
     const id = 550; // Movie ID for Fight Club
 
     
@@ -42,14 +46,25 @@ function Community() {
         }
     }
 
+        // constantly listens to the scroll position
+        useEffect(() => {
+            const handleScroll = () => {
+                setScroll(window.scrollY);
+            };
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }, []);
+
 
   return (
     <section id="community" className='community'>
         <div className="container-fluid">
-            <div className="row" data-aos='fade-up' data-aos-delay='100'>
+            <div className="row">
                 <h4 className="section-title">Community Reviews</h4>
             </div>
-            <div className="row mt-5" data-aos='fade-up' data-aos-delay='300'>
+            <div className="row mt-5">
                 <div className="col-12 mb-4">
                     <textarea 
                     className="form-control" 
@@ -73,6 +88,9 @@ function Community() {
                 </div>
             </div>
         </div>
+        <Header scroll={scroll} />
+        <Footer />
+        <BackToTopBtn scroll={scroll} />
     </section>
   )
 }
