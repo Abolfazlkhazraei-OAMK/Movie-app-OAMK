@@ -1,11 +1,13 @@
-import { selectUserById } from '../models/ProfileModel.js';
+import { selectUserById, removeUserById } from '../models/ProfileModel.js'; // Add removeUserById import
 import { ApiError } from '../helpers/ApiError1.js';
 import jwt from 'jsonwebtoken';
 
+// Function to get user profile
 const getUserProfile = async (req, res, next) => {
     try {
         const authHeader = req.headers.authorization;
         console.log("Authorization Header:", authHeader); // Log authorization header
+
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
             return res.status(401).json({ error: 'Unauthorized access. Token missing or invalid.' });
         }
@@ -48,5 +50,48 @@ const getUserProfile = async (req, res, next) => {
     }
 };
 
+// Function to delete the current user
+const deleteUser = async (req, res, next) => {
+    try {
+        const authHeader = req.headers.authorization;
 
-export { getUserProfile };
+        // Check if the authorization header exists and is properly formatted
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return res.status(401).json({ error: 'Unauthorized access. Token missing or invalid.' });
+        }
+
+        // Extract the token from the authorization header
+        const token = authHeader.split(' ')[1];
+
+        let decoded;
+        try {
+            // Verify and decode the token
+            decoded = jwt.verify(token, process.env.TMDB_ACCESS_TOKEN);
+        } catch (err) {
+            console.error("Token verification failed:", err.message);
+            return res.status(401).json({ error: 'Invalid token. Please log in again.' });
+        }
+
+        const userId = decoded.id; // Extract the user ID from the token payload
+        if (!userId) {
+            return res.status(401).json({ error: 'Token does not contain user ID.' });
+        }
+
+        console.log("Deleting User ID:", userId); // Log the user ID being deleted
+
+        // Delete the user from the database
+        const result = await removeUserById(userId);
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: 'User not found.' });
+        }
+
+        // Return a success response
+        return res.status(200).json({ message: 'User successfully deleted.' });
+    } catch (error) {
+        console.error('Error in deleteUser:', error.message);
+        next(error);
+    }
+};
+
+
+export { getUserProfile, deleteUser };
