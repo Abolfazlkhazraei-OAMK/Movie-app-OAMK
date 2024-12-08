@@ -248,3 +248,72 @@
         font-size: 28px;
     }
 }
+
+
+
+/* Go Back Button */
+/* Styles the Go Back button to match the futuristic theme */
+.go-back-button {
+    /* Centers the button */
+    display: inline-block;
+
+    /* Adds spacing between the button and other elements */
+    margin-top: 20px;
+
+    /* Adds padding for a better clickable area */
+    padding: 10px 20px;
+
+    /* Sets a larger font size for visibility */
+    font-size: 16px;
+
+    /* Adds bold weight for emphasis */
+    font-weight: bold;
+
+    /* Changes the text color to white */
+    color: #fff;
+
+    /* Adds a gradient background matching the profile container */
+    background: linear-gradient(145deg, #1a1a1a, #101010);
+
+    /* Rounds the corners for a smooth look */
+    border-radius: 8px;
+
+    /* Removes the default button border */
+    border: none;
+
+    /* Adds a glowing outline effect */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
+
+    /* Makes the cursor a pointer to indicate interactivity */
+    cursor: pointer;
+
+    /* Smooth hover transitions */
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Go Back Button */
+/* Adds an interactive hover glow */
+.go-back-button:hover {
+    /* Changes background to a brighter glow */
+    background: linear-gradient(145deg, #292929, #1f1f1f);
+
+    /* Increases the glow intensity */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.8);
+
+    /* Slightly scales up the button for emphasis */
+    transform: scale(1.05);
+}
+
+/* Active Effect for Go Back Button */
+/* Adds a pressed-down effect */
+.go-back-button:active {
+    /* Darkens the background to show the button is pressed */
+    background: linear-gradient(145deg, #101010, #0d0d0d);
+
+    /* Shrinks the glow slightly */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
+
+    /* Scales down the button */
+    transform: scale(0.98);
+}
+
