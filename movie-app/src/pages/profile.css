@@ -3,27 +3,38 @@
     max-width: 600px;
     margin: 50px auto;
     padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #ffffff, #f7f8fa);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #101010, #1a1a1a);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.05);
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.profile-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+/* Glow Effect Container */
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    z-index: -1;
+    animation: glowing-bg 6s infinite alternate;
 }
 
 /* Title */
 .profile-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     text-align: center;
-    color: #333;
     margin-bottom: 25px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: #00ffff; /* Neon glow color */
+    text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+    animation: pulse-title 3s infinite ease-in-out;
 }
 
 /* Profile Info Group */
@@ -33,58 +44,74 @@
     align-items: center;
     margin-bottom: 15px;
     padding: 10px 0;
-    border-bottom: 1px solid #eee;
     font-size: 16px;
-    color: #555;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #ddd;
+    background: linear-gradient(145deg, #1a1a1a, #101010);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .profile-info:hover {
-    background-color: #f9f9f9;
-    color: #333;
+    transform: translateX(10px);
+    background-color: #292929;
+    box-shadow: 0 0 15px #00ffff;
 }
 
 /* Label and Value */
 .profile-label {
     font-weight: bold;
-    color: #212529;
-    font-size: 16px;
+    color: #ff007f; /* Neon pink */
+    text-shadow: 0 0 8px #ff007f, 0 0 15px #ff007f;
 }
 
 .profile-value {
-    color: #495057;
-    font-size: 16px;
+    color: #00ffff; /* Neon blue */
+    text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
     font-style: italic;
-    text-align: right;
-    word-wrap: break-word;
 }
 
 /* Loading and Error States */
-.profile-loading {
+.profile-loading, .profile-error {
     font-size: 18px;
-    color: #007bff;
     text-align: center;
     margin: 30px 0;
-    animation: pulse 1.5s infinite;
+    animation: glowing-text 2s infinite ease-in-out;
+}
+
+.profile-loading {
+    color: #00ffff;
 }
 
 .profile-error {
-    font-size: 18px;
-    color: #dc3545;
-    text-align: center;
-    margin: 30px 0;
+    color: #ff007f;
 }
 
-/* Animation for Loading */
-@keyframes pulse {
+/* Animations */
+@keyframes glowing-bg {
     0% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent 70%);
     }
     100% {
-        opacity: 0.6;
+        background: radial-gradient(circle, rgba(255, 0, 127, 0.2), transparent 70%);
+    }
+}
+
+@keyframes pulse-title {
+    0%, 100% {
+        text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+    }
+    50% {
+        text-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 75px #00ffff;
+    }
+}
+
+@keyframes glowing-text {
+    0%, 100% {
+        color: #00ffff;
+    }
+    50% {
+        color: #ff007f;
     }
 }
 
@@ -97,6 +124,7 @@
     .profile-info {
         flex-direction: column;
         align-items: flex-start;
+        padding: 15px;
     }
 
     .profile-label, .profile-value {
@@ -104,6 +132,6 @@
     }
 
     .profile-title {
-        font-size: 24px;
+        font-size: 28px;
     }
 }
