@@ -37,12 +37,11 @@ function Profile() {
         }
     }, []);
     
-
     if (loading) {
         console.log("Loading profile data..."); // Debug log for loading state
         return (
             <div className="profile-container">
-                <p>Loading your profile...</p>
+                <p className="profile-loading">Loading your profile...</p>
             </div>
         );
     }
@@ -51,18 +50,32 @@ function Profile() {
         console.error("Error state:", error); // Debug log for error state
         return (
             <div className="profile-container">
-                <p>Error: {error}</p>
+                <p className="profile-error">Error: {error}</p>
             </div>
         );
     }
 
     return (
         <div className="profile-container">
-            <h1>Your Profile</h1>
-            <p><strong>First Name:</strong> {profileData.firstname}</p>
-            <p><strong>Last Name:</strong> {profileData.lastname}</p>
-            <p><strong>Email:</strong> {profileData.email}</p>
-            <p><strong>Account Created:</strong> {new Date(profileData.createdAt).toLocaleDateString()}</p>
+            <h1 className="profile-title">Your Profile</h1>
+            <p className="profile-info">
+                <strong className="profile-label">First Name:</strong> 
+                <span className="profile-value">{profileData.firstname}</span>
+            </p>
+            <p className="profile-info">
+                <strong className="profile-label">Last Name:</strong> 
+                <span className="profile-value">{profileData.lastname}</span>
+            </p>
+            <p className="profile-info">
+                <strong className="profile-label">Email:</strong> 
+                <span className="profile-value">{profileData.email}</span>
+            </p>
+            <p className="profile-info">
+                <strong className="profile-label">Account Created:</strong> 
+                <span className="profile-value">
+                    {new Date(profileData.createdAt).toLocaleDateString()}
+                </span>
+            </p>
         </div>
     );
 }
