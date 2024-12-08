@@ -16,19 +16,17 @@ const port = 3001
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
 
 // User routes
-app.use('/user', userRouter)
+app.use('/api/user', userRouter)
 // Group routes
-app.use('/group', GroupCreate)
+app.use('/api/group', GroupCreate)
 // Movies routes
-app.use('/movies', movieRoutes)
+app.use('/api', movieRoutes)
 // Reviews routes
-app.use('/reviews', reviewRoutes)
+app.use('/api/reviews', reviewRoutes)
 // Favorites routes
-app.use('/favorites', favoritesRoutes)
+app.use('/api/favorites', favoritesRoutes)
 
 app.use((err,req,res,next) => {
     const statusCode = err.statusCode || 500
