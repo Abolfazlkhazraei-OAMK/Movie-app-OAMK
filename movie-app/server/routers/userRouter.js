@@ -1,6 +1,7 @@
 import { Router } from 'express'
-import { postLogin, postRegistration } from '../controllers/UserController.js'
+import { deleteAccount, postLogin, postRegistration } from '../controllers/UserController.js'
 import { authenticate } from '../middleware/AuthMiddleware.js'
+
 
 const router = Router()
 
