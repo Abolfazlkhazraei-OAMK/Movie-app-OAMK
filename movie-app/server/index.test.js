@@ -1,5 +1,10 @@
 import { expect } from "chai";
 import { response } from "express";
+import jwt from "jsonwebtoken";
+const {sign} = jwt
+import dotenv from 'dotenv';
+dotenv.config({path: "./.env"});
+
 
 const base_url = 'http://localhost:3001'
 
@@ -39,5 +44,30 @@ describe('POST register',() => {
         expect(response.status).to.equal(201, data.error)
         expect(data).to.be.an('object')
         expect(data).to.include.all.keys('email')
+    })
+})
+
+describe('POST delete', () => {
+    it ('should delete a user', async() => {
+        const email = 'register13@foo.com'
+        const password = 'register123'
+        if (!process.env.TMDB_ACCESS_TOKEN) {
+            throw new Error('TMDB_ACCESS_TOKEN is not defined');
+        }
+        // const token = sign(email, process.env.TMDB_ACCESS_TOKEN)
+        const token = jwt.sign({ email }, process.env.TMDB_ACCESS_TOKEN)
+        const response = await fetch(base_url + '/user/delete-account', {
+            method: 'delete',
+            headers: {
+                'Content-Type':'application/json',
+                Authorization: `Bearer ${token}`,
+            }, 
+            body: JSON.stringify({email: 'register13@foo.com',
+            password: 'register123'})
+        })
+        const data = await response.json()
+        expect(response.status).to.equal(200, data.error)
+        expect(data).to.be.an('object')
+        // expect(data).to.include.all.keys('email')
     })
 })
