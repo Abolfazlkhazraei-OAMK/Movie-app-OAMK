@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import pkg from "pg"
 import {router as userRouter} from './routers/userRouter.js'
+import { favoriteRouter } from "./routers/favoriteRouter.js"
+import { usersRouter } from "./routers/usersRouter.js"
 import GroupCreate from "./routers/groupRoutes.js"
 
 // **Import Profile Router**
@@ -15,6 +17,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use('/user', userRouter)
+app.use('/users', usersRouter)
+app.use('/favourites', favoriteRouter)
 app.use('/group', GroupCreate)
 
 

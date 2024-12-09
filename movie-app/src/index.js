@@ -17,6 +17,7 @@ import GroupCreateComponent from './components/GroupCreate';
 // **New Import for Profile**
 import Profile from './pages/Profile';
 
+import ProfilePage from './pages/ProfilePage';
 
 const router = createBrowserRouter([
  {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
+  },
+  {
+    path: "/users/:userId",
+    element: <ProfilePage />
   },
   {
     path: "/",
