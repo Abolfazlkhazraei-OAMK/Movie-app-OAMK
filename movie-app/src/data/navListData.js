@@ -6,8 +6,8 @@ const navListData = [{
 },
 {
     id: 2,
-    link: '/trending',
-    name: 'Trending',
+    link: '/movies',
+    name: 'Movies',
     active: false
 },
 {
@@ -20,6 +20,13 @@ const navListData = [{
     id: 4,
     link: '/community',
     name: 'Community',
+    active: false
+},
+{
+    //Newly added part
+    id: 5,
+    link: '/profile',
+    name: 'Profile',
     active: false
 }]
 

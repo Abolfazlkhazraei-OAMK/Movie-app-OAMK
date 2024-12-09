@@ -4,6 +4,10 @@ import pkg from "pg"
 import {router as userRouter} from './routers/userRouter.js'
 import { favoriteRouter } from "./routers/favoriteRouter.js"
 import { usersRouter } from "./routers/usersRouter.js"
+import GroupCreate from "./routers/groupRoutes.js"
+
+// **Import Profile Router**
+import { router as profileRouter } from './routers/profileRouter.js';
 
 const port = 3001
 // console.log("port", port);
@@ -15,10 +19,17 @@ app.use(express.urlencoded({extended: false}))
 app.use('/user', userRouter)
 app.use('/users', usersRouter)
 app.use('/favourites', favoriteRouter)
+app.use('/group', GroupCreate)
+
+
+// **Register Profile Router**
+app.use('/profile', profileRouter);
 
 app.use((err,req,res,next) => {
     const statusCode = err.statusCode || 500
     res.status(statusCode).json({error: err.message})
 })
 
-app.listen(port)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
+})

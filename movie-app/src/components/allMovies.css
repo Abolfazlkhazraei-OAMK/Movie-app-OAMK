@@ -1,0 +1,180 @@
+section .movies .card {
+    border: none;
+    position: relative;
+    border-radius: 0;
+    background: #000000 !important;
+    /* background-color: aqua; */
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+    transition: 0.5s;
+    gap: 10px;
+    height: 95%;
+    padding-bottom: 20px;
+}
+
+
+
+section .movies .movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 !important;
+}
+
+section .movies .movies-container > .movie {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    height: 50;
+   
+}
+
+section .movie .card::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    transform: scale(0);
+}
+/* 
+section .movies .card p {
+    color: #dddddd;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px 0;
+} */
+
+section .movie .card-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    transform: scale(0);
+}
+
+section .movies .card-body h5 {
+    position: relative;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+section .movies .card-body h5::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: -10px;
+    height: 5px;
+    width: 80%;
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--primary),
+        transparent
+    );
+    z-index: 1000;
+}
+
+section .movies .card-body {
+    font-size: 2.5rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+section .movies .card-body:hover {
+    color: var(--primary);
+}
+
+section .movies:hover .card-body,
+section .movies:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+section .selected-movie {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+section .selected-movie p {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px 0;
+}
+
+section .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+section .pagination button {
+    padding: 10px 20px;
+    border: none;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+section .pagination button:hover {
+    background: #ffffff;
+    color: var(--primary);
+}
+
+section .pagination button.active {
+    background: #ffffff;
+    color: var(--primary);
+}
+
+section .pagination button:disabled {
+    background: #dddddd;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+section .pagination button:disabled:hover {
+    background: #dddddd;
+    color: #ffffff;
+}
+
+section .pagination span {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+}

@@ -1,33 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import './community.css';
+import Header from '../pages/Header';
+import BackToTopBtn from './BackToTopBtn';
+import Footer from '../pages/Footer';
 
 function Community() {
     const [community, setCommunity] = useState([]);
     const [newReviews, setNewReviews] = useState('');
+    const [scroll, setScroll] = useState(0);
+    const id = 550; // Movie ID for Fight Club
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621');
-            const data = await response.json();
-            setCommunity(data);
-        } catch (error) {
-            console.log('error fetching data:', error);
-        }
-    }
+    
 
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`);
+                const data = await response.json();
+                setCommunity(data);
+            } catch (error) {
+                console.log('error fetching data:', error);
+            }
+        }
         fetchData();
-    }, []);
+    }, [id]);
 
-    const handleNewReview = async () => {
+    const handleNewReview = async (movie_id) => {
+        console.log(movie_id)
         if(newReviews.trim() === '') return;
         try {
-            const response = await fetch('https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621', {
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({content: newReviews, user: 'Anonymous'})
+                body: JSON.stringify({ content: newReviews, user: 'Anonymous' })
             })
             if(response.ok) {
                 const newEntry = await response.json();
@@ -39,14 +46,25 @@ function Community() {
         }
     }
 
+        // constantly listens to the scroll position
+        useEffect(() => {
+            const handleScroll = () => {
+                setScroll(window.scrollY);
+            };
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }, []);
+
 
   return (
     <section id="community" className='community'>
         <div className="container-fluid">
-            <div className="row" data-aos='fade-up' data-aos-delay='100'>
+            <div className="row">
                 <h4 className="section-title">Community Reviews</h4>
             </div>
-            <div className="row mt-5" data-aos='fade-up' data-aos-delay='300'>
+            <div className="row mt-5">
                 <div className="col-12 mb-4">
                     <textarea 
                     className="form-control" 
@@ -55,7 +73,7 @@ function Community() {
                     value={newReviews}
                     onChange={(e) => setNewReviews(e.target.value)}
                     ></textarea>
-                    <button className="btn btn-primary mt-2" onClick={handleNewReview}>Post Review</button>
+                    <button className="btn btn-primary mt-2" onClick={() => handleNewReview(id)}>Post Review</button>
                 </div>
                 <div className="col-12">
                     {community && community.length > 0 ? ( community.map((review) => (
@@ -70,6 +88,9 @@ function Community() {
                 </div>
             </div>
         </div>
+        <Header scroll={scroll} />
+        <Footer />
+        <BackToTopBtn scroll={scroll} />
     </section>
   )
 }

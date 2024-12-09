@@ -1,4 +1,4 @@
-import pool from "../db.js"
+import pool from "../helpers/db.js"
 
 
 const insertUser = async (email, hashedPassword, firstname, lastname, createdAt) => {

@@ -1,22 +1,28 @@
-// import pkg from 'pg'
-// import dotenv from 'dotenv'
+import pkg from 'pg';
+import dotenv from 'dotenv';
 
-// const environment = process.env.NODE_ENV
-// dotenv.config()
+dotenv.config();
 
-// const {Pool} = pkg
+const { Pool } = pkg;
 
-// const openDb = () => {
-//     const pool = new Pool ({
-//         user: process.env.DB_USER,
-//         host: process.env.DB_HOST, 
-//         database: process.env.DB_NAME,
-//         password: process.env.DB_PASSWORD,
-//         port: process.env.DB_PORT
-//     })
-//     return pool
-// }
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
-// const pool = openDb()
+pool.connect()
+  .then(client => {
+    console.log('Connected to the database');
+    client.release();
+  })
+  .catch(err => {
+    console.error('Error connecting to database:', err.code, err.message);
+  });
 
-// export {pool}
+export default pool;
