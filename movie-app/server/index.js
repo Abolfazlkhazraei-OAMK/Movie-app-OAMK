@@ -8,6 +8,7 @@ import GroupCreate from "./routers/groupRoutes.js"
 
 // **Import Profile Router**
 import { router as profileRouter } from './routers/profileRouter.js';
+import { messageRouter } from "./routers/messageRouter.js"
 
 const port = 3001
 // console.log("port", port);
@@ -20,6 +21,7 @@ app.use('/user', userRouter)
 app.use('/users', usersRouter)
 app.use('/favourites', favoriteRouter)
 app.use('/group', GroupCreate)
+app.use(messageRouter)
 
 
 // **Register Profile Router**

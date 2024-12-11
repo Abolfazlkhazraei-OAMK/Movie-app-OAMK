@@ -18,6 +18,7 @@ import GroupCreateComponent from './components/GroupCreate';
 import Profile from './pages/Profile';
 
 import ProfilePage from './pages/ProfilePage';
+import GroupChat from './pages/GroupChat';
 
 const router = createBrowserRouter([
  {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
+  },
+  {
+    path: "/groups/:groupId",
+    element: <GroupChat />
   },
   {
     path: "/users/:userId",

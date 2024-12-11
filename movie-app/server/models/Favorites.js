@@ -1,4 +1,4 @@
-import pool from "../db.js";
+import pool from "../helpers/db.js";
 
 const insertFavorite = async (user_id, movie_id, added_at) => {
     return await pool.query('insert into Favorites (user_id, movie_id, added_at) values ($1, $2, $3) returning *', [user_id, movie_id, added_at])

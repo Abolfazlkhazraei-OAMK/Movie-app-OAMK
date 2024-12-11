@@ -78,3 +78,10 @@ CREATE TABLE group_requests (
     status status_enum2 DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE GroupMessages (
+    group_id INT,
+    user_id INT REFERENCES Users(user_id),
+    message_content VARCHAR(255) NOT NULL,
+    message_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);

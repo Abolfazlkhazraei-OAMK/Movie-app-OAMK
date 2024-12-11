@@ -1,10 +1,10 @@
-import { ApiError } from "../helpers/ApiError1"
-import { emptyOrRows } from "../helpers/utils"
-import { selectMessages, insertMessage } from "../models/messages"
+import { ApiError } from "../helpers/ApiError1.js"
+import { emptyOrRows } from "../helpers/utils.js"
+import { selectMessages, insertMessage } from "../models/Messages.js"
 
 const getMessages = async(req,res,next) => {
     try {
-        const result = await selectMessages()
+        const result = await selectMessages(req.params.groupId)
         return res.status(200).json(emptyOrRows(result))
 
     } catch (error) {
@@ -19,12 +19,13 @@ const postMessage = async(req,res,next) => {
             return next(error)
         }
 
-        const message = await insertMessage(req.body.message)
+        const timestamp = new Date()
+        const result = await insertMessage(req.params.groupId, req.body.userId, req.body.message, timestamp)
         
-        return res.status(200).json({message: message})
+        return res.status(200).json(result.rows[0])
     } catch (error) {
         return next(error)
     }
 }
 
-export {getMessages,postMessage}
+export { getMessages, postMessage }
