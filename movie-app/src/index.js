@@ -13,6 +13,7 @@ import MovieDetail from './components/MovieDetail';
 import Showtime from './components/Showtime';
 //import Community from './components/Community';
 import GroupCreateComponent from './components/GroupCreate';
+import Search from './components/Search';
 
 const router = createBrowserRouter([
  {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/movies/:id",
     element: <MovieDetail />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
   },
   {
     path: "/showtime",

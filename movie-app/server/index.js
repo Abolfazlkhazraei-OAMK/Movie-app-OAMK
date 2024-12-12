@@ -2,7 +2,6 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import bodyParser from "body-parser"
-import pool from "./helpers/db.js"
 import {router as userRouter} from './routers/userRouter.js'
 import GroupCreate from "./routers/groupRoutes.js"
 import movieRoutes from "./routers/movieRoutes.js"

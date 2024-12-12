@@ -11,11 +11,31 @@ function AllMovies() {
     const [scroll, setScroll] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [selectedGenre, setSelectedGenre] = useState('');
+    const [selectedYear, setSelectedYear] = useState('');
+    const [selectedRating, setSelectedRating] = useState('');
+    const [genresList, setGenresList] = useState([]);
+
+    useEffect(() => {
+        const fetchGenres = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=79c7dae27cf47e05e9fe3cbe39e0d621`);
+                const data = await response.json();
+                setGenresList(data.genres);
+            } catch (error) {
+                console.error('Error fetching genres:', error);
+            }
+        };
+        fetchGenres();
+    }, []);
 
 
         const fetchMovies = async (page) => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=79c7dae27cf47e05e9fe3cbe39e0d621&page=${page}`);
+                const genreQuery = selectedGenre ? `&with_genres=${selectedGenre}` : '';
+                const yearQuery = selectedYear ? `&primary_release_year=${selectedYear}` : '';
+                const ratingQuery = selectedRating ? `&vote_average.gte=${selectedRating}` : '';
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=79c7dae27cf47e05e9fe3cbe39e0d621&page=${page}${genreQuery}${yearQuery}${ratingQuery}`);
                 const data = await response.json();
                 setMovies(data.results);
                 setTotalPages(data.total_pages);
@@ -27,7 +47,7 @@ function AllMovies() {
         };
 
         useEffect(() => {
-            fetchMovies(currentPage);
+            fetchMovies(currentPage,);
         }, [currentPage]);
 
 
@@ -63,6 +83,29 @@ function AllMovies() {
     return (
         <div className="container-fluid">
             <section>
+                <div className='filter-section'>
+                    <select onChange={(e) => setSelectedGenre(e.target.value)} value={selectedGenre}>
+                        <option value="">Select Genre</option>
+                        {genresList.map((genre) => (
+                            <option key={genre.id} value={genre.id}>{genre.name}</option>
+                        ))}
+                    </select>
+                    <input 
+                        className='year'
+                        type="text" 
+                        placeholder="Release Year" 
+                        value={selectedYear} 
+                        onChange={(e) => setSelectedYear(e.target.value)} 
+                    />
+                    <input 
+                        className='rating'
+                        type="number" 
+                        placeholder="Minimum Rating" 
+                        value={selectedRating} 
+                        onChange={(e) => setSelectedRating(e.target.value)} 
+                    />
+                    <button onClick={() => fetchMovies(currentPage)}>Apply Filters</button>
+                </div>
                 <div className='movies'>
                     {loading ? (
                         <p>Loading movies...</p>
