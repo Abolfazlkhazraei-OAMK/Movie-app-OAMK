@@ -15,6 +15,10 @@ import Showtime from './components/Showtime';
 import GroupCreateComponent from './components/GroupCreate';
 import Search from './components/Search';
 
+// **New Import for Profile**
+import Profile from './pages/Profile';
+
+
 const router = createBrowserRouter([
  {
      errorElement: <ErrorPage />
@@ -50,6 +54,11 @@ const router = createBrowserRouter([
   {
     path: "/community",
     element: <GroupCreateComponent />,
+  },
+  // **New Route for Profile Page**
+  {
+    path: "/profile",
+    element: <Profile />,
   }
 ]);
 

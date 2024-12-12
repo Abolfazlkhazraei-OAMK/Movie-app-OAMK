@@ -6,6 +6,8 @@ import Search from '../components/Search'
 import Button from '../components/Button'
 import { useUser } from '../context/useUser'
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function Header({scroll, movies}) {
     const navigate = useNavigate();
@@ -20,6 +22,11 @@ function Header({scroll, movies}) {
 
     const handleClickLogout = () => {
         signOut(); 
+    };
+
+    // **New function to navigate to Profile**
+    const handleProfileClick = () => {
+        navigate('/profile');
     };
 
     const [navList, setNavList] = useState(navListData);
@@ -68,14 +75,16 @@ function Header({scroll, movies}) {
                     )}
                 </li>
             </ul>
-            <ul className='nav'>
-                {
-                    navList.map((nav) => {
-                        return <NavListItem key={nav.id} nav={nav} navOnClick={handleNavOnClick} />
-                    })
-                }
-            </ul>
+            <ul className="nav">
+                    {navList.map((nav) => (
+                        <NavListItem key={nav.id} nav={nav} navOnClick={handleNavOnClick} />
+                    ))}
+                    {user?.email && !navList.some((nav) => nav.name === 'Profile')}
+                </ul>
             <Search />
+            <div className="icon-profile" onClick={handleProfileClick}>
+                    <FontAwesomeIcon icon={faUser} />
+                </div>
             {user?.email ? (
                 <div className="login-info">
                     {/* <span>Welcome, {user.email}</span> */}

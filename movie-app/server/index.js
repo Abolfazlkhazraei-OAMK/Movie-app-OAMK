@@ -4,6 +4,9 @@ import cors from "cors"
 import bodyParser from "body-parser"
 import {router as userRouter} from './routers/userRouter.js'
 import GroupCreate from "./routers/groupRoutes.js"
+
+// **Import Profile Router**
+import { router as profileRouter } from './routers/profileRouter.js';
 import movieRoutes from "./routers/movieRoutes.js"
 import reviewRoutes from "./routers/reviewRoutes.js"
 import favoritesRoutes from "./routers/favoritesRoutes.js"
@@ -14,18 +17,10 @@ const port = 3001
 
 const app = express()
 app.use(cors())
-app.use(bodyParser.json())
-
-// User routes
-app.use('/api/user', userRouter)
-// Group routes
-app.use('/api/group', GroupCreate)
-// Movies routes
-app.use('/api', movieRoutes)
-// Reviews routes
-app.use('/api/reviews', reviewRoutes)
-// Favorites routes
-app.use('/api/favorites', favoritesRoutes)
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.use('/user', userRouter)
+app.use('/group', GroupCreate)
 
 app.use((err,req,res,next) => {
     const statusCode = err.statusCode || 500
