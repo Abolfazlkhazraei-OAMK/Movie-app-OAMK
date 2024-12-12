@@ -64,17 +64,15 @@ function Profile() {
                 })
                 .then(() => {
                     sessionStorage.removeItem('user'); // Clear user data from session storage
-                    console.log('User data removed from session storage'); // Confirm removal
                     setDeleteSuccess(true);
                     alert('Your profile has been successfully deleted!');
                     navigate('/'); // Redirect to the home page
                     setTimeout(() => {
                         window.location.reload(); // Force page refresh after redirect
-                    }, 100); // Add a short delay to ensure navigation is complete
+                    }, 100);
                 })
                 .catch((err) => {
                     setDeleteError(err.message);
-                    console.error('Error deleting user:', err.message); // Log any errors
                 });
         }
     };
@@ -83,8 +81,6 @@ function Profile() {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
     
         if (userFromSession && userFromSession.token) {
-            console.log('Sending updated profile:', updatedProfile); // Debug log
-    
             fetch(`${process.env.REACT_APP_API_URL}/profile`, {
                 method: 'PUT',
                 headers: {
@@ -109,7 +105,6 @@ function Profile() {
                 });
         }
     };
-    
 
     if (loading) {
         return (
@@ -137,7 +132,16 @@ function Profile() {
 
     return (
         <div className="profile-container">
-            <h1 className="profile-title">Your Profile</h1>
+            {/* Display Initials in a Circle */}
+            <div className="profile-initials">
+                {profileData.firstname && profileData.lastname ? (
+                    <div className="initials-circle">
+                        {profileData.firstname[0].toUpperCase()}{profileData.lastname[0].toUpperCase()}
+                    </div>
+                ) : (
+                    <div className="initials-circle">?</div>
+                )}
+            </div>
 
             {/* Edit Mode */}
             {editMode ? (

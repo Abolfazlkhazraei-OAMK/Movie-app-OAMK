@@ -1,16 +1,15 @@
 /* General Container */
 .profile-container {
-    max-width: 600px; /* Restricts the width for readability */
-    margin: 50px auto; /* Centers the container */
-    padding: 30px; /* Adds space inside the container */
-    border-radius: 12px; /* Rounds the corners */
-    background: #000000; /* Solid black background */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 87, 0, 0.3); /* Glowing effect */
-    font-family: 'Racing Sans One', sans-serif; /* Futuristic font */
-    color: white; /* Text color */
-    position: relative; /* For glow effect positioning */
-    overflow: hidden; /* Prevents overflow */
-    z-index: 1; /* Keeps it above other elements */
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background: #000000;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 0 15px var(--primary); /* Glowing container outline */
 }
 
 /* Glow Effect Container */
@@ -21,65 +20,59 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255, 87, 0, 0.2), transparent 70%);
+    background: none; /* Removed radial gradient for internal glow */
     z-index: -1;
-    animation: glowing-bg 6s infinite alternate; /* Animates the glowing effect */
 }
 
 /* Title */
 .profile-title {
-    font-size: 32px; /* Large font size */
-    font-weight: bold; /* Makes the title bold */
-    text-align: center; /* Centers the text */
-    margin-bottom: 25px; /* Adds space below the title */
-    color: var(--primary); /* Bright orange color */
-    text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary), 0 0 45px var(--primary); /* Glowing effect */
-    animation: pulse-title 3s infinite ease-in-out; /* Pulse animation */
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--primary); /* Primary color for title text */
 }
 
 /* Profile Info Group */
 .profile-info {
-    display: flex; /* Aligns label and value horizontally */
-    justify-content: space-between; /* Pushes label and value to opposite sides */
-    align-items: center; /* Vertically centers content */
-    margin-bottom: 15px; /* Adds space between rows */
-    padding: 10px 0; /* Adds padding inside each row */
-    font-size: 16px; /* Default font size */
-    color: #ddd; /* Muted text color */
-    background: #1a1a1a; /* Darker background for contrast */
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05); /* Subtle shadow */
-    border-radius: 6px; /* Smooth corners */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #ddd;
+    background: #1a1a1a;
+    border-radius: 6px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 /* Hover effect for Profile Info rows */
 .profile-info:hover {
-    transform: translateX(10px); /* Slides slightly */
-    background-color: #292929; /* Darker hover effect */
-    box-shadow: 0 0 15px var(--primary); /* Adds glow */
+    transform: translateX(10px);
+    background-color: #292929;
 }
 
 /* Label Styling */
 .profile-label {
-    font-weight: bold; /* Makes the label bold */
-    color: var(--primary); /* Bright orange */
+    font-weight: bold;
+    color: var(--primary);
     margin-left: 20px;
-    text-shadow: 0 0 8px var(--primary), 0 0 15px var(--primary); /* Glow effect */
 }
 
 /* Value Styling */
 .profile-value {
-    color: white; /* Bright white text */
+    color: white;
     margin-right: 20px;
-    font-style: italic; /* Slightly italic for contrast */
+    font-style: italic;
 }
 
 /* Buttons Container */
 .buttons-container {
-    display: flex; /* Aligns buttons horizontally */
-    gap: 20px; /* Space between buttons */
-    justify-content: center; /* Centers the buttons */
-    margin-top: 30px; /* Space above container */
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 /* Go Back Button */
@@ -89,18 +82,16 @@
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background-color: black; /* Matches theme */
-    border: 2px solid var(--primary); /* Bright border */
+    background-color: black;
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--primary);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 /* Hover Effect for Go Back Button */
 .go-back-button:hover {
-    background-color: var(--primary); /* Bright orange background */
-    color: black; /* Black text for contrast */
+    background-color: var(--primary);
+    color: black;
 }
 
 /* Delete Account Button */
@@ -110,18 +101,17 @@
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background-color: var(--primary); /* Bright orange for danger */
+    background-color: var(--primary);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--primary);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 /* Hover Effect for Delete Account Button */
 .delete-account-button:hover {
-    background-color: white; /* Bright white background */
-    color: var(--primary); /* Bright orange text */
+    background-color: white;
+    color: var(--primary);
 }
 
 /* Loading and Error States */
@@ -129,62 +119,25 @@
     font-size: 18px;
     text-align: center;
     margin: 30px 0;
-    animation: glowing-text 2s infinite ease-in-out;
 }
 
 /* Loading State Styling */
 .profile-loading {
-    color: var(--primary); /* Bright orange for loading */
+    color: var(--primary);
 }
 
 /* Error State Styling */
 .profile-error {
-    color: red; /* Bright red for errors */
+    color: red;
 }
 
 /* Success Message */
 .profile-success {
     font-size: 18px;
-    color: green; /* Bright green for success */
+    color: green;
     text-align: center;
     margin: 20px 0;
 }
-
-/* Animations */
-@keyframes glowing-bg {
-    0% {
-        background: radial-gradient(circle, rgba(255, 87, 0, 0.2), transparent 70%);
-    }
-    100% {
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
-    }
-}
-
-@keyframes pulse-title {
-    0%, 100% {
-        text-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary), 0 0 45px var(--primary);
-    }
-    50% {
-        text-shadow: 0 0 25px var(--primary), 0 0 50px var(--primary), 0 0 75px var(--primary);
-    }
-}
-
-@media (max-width: 768px) {
-    .profile-container {
-        padding: 20px;
-    }
-
-    .profile-info {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .profile-title {
-        font-size: 28px;
-    }
-}
-
-
 
 /* Profile Input */
 .profile-input {
@@ -231,33 +184,90 @@
 
 /* Edit Button */
 .edit-button {
-    display: block; /* Makes the button behave as a block-level element */
-    margin: 20px auto; /* Centers the button horizontally */
-    padding: 12px 25px; /* Adds padding for better click area */
-    background-color: var(--primary); /* Bright orange color */
-    color: #000; /* Black text for contrast */
-    border: none; /* Removes default border */
-    border-radius: 8px; /* Smooth corners */
-    font-size: 16px; /* Readable font size */
-    font-weight: bold; /* Bold text for emphasis */
-    text-align: center; /* Centers text inside the button */
-    cursor: pointer; /* Pointer cursor to indicate interactivity */
-    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); /* Glowing effect */
-    transition: all 0.3s ease; /* Smooth hover transitions */
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    background-color: var(--primary);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 /* Hover Effect for Edit Button */
 .edit-button:hover {
-    background-color: #ff5100; /* Slightly brighter orange */
-    color: #fff; /* White text for contrast */
-    box-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary); /* Enhanced glow */
-    transform: scale(1.05); /* Slight scaling effect */
+    background-color: #ff5100;
+    color: #fff;
 }
 
 /* Active Effect for Edit Button */
 .edit-button:active {
-    background-color: #e04a00; /* Slightly darker orange when pressed */
-    box-shadow: 0 0 5px var(--primary), 0 0 15px var(--primary); /* Reduced glow */
-    transform: scale(0.95); /* Button appears pressed */
+    background-color: #e04a00;
 }
 
+
+
+
+/* Full-Page Background */
+body {
+    background: #000; /* Base dark background for the cinematic effect */
+    margin: 0;
+    height: 100vh;
+    position: relative;
+}
+
+/* Dynamic Light Effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    animation: dynamicLight 10s infinite ease-in-out;
+    z-index: -1; /* Ensure it's behind the content */
+    pointer-events: none; /* No interaction with the light */
+}
+
+/* Keyframes for Random Light Movement */
+@keyframes dynamicLight {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    25% {
+        transform: translate(30%, -70%) scale(1.5);
+    }
+    50% {
+        transform: translate(70%, 30%) scale(2);
+    }
+    75% {
+        transform: translate(-40%, 60%) scale(1.5);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+
+/* Initials Circle */
+.initials-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #ff5100; /* Circle background */
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 4px solid #00bfff; /* Optional border */
+    margin: 0 auto 20px; /* Center and space */
+    text-transform: uppercase; /* Force uppercase initials */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
