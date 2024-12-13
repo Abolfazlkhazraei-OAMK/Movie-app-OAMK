@@ -10,7 +10,7 @@ const auth = (req, res, next) => {
     } else {
         try {
             const token = req.headers.authorization
-        jwt.verify(token,process.env.TMDB_ACCESS_TOKEN)
+        jwt.verify(token,process.env.JWT_SECRET)
             next()
         } catch (err) {
             res.statusMessage = invalidCredentials
