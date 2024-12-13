@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/useUser";
 
 export default function DeleteAccount() {
-    const { deleteAccount } = useUser(); // Mazací funkce definovaná v kontextu
+    const { deleteAccount } = useUser();
     const navigate = useNavigate();
 
     const handleDeleteAccount = async () => {
