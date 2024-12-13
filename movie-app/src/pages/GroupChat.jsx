@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import GroupChatMessage from "../components/GroupChatMessage";
-import { Remarkable } from 'remarkable'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const md = new Remarkable('commonmark');
-
 export default function GroupChat() {
     const { groupId } = useParams();
+    const [group, setGroup] = useState()
     const currentUser = sessionStorage.getItem('user')
-    console.log(currentUser)
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
 
@@ -57,7 +54,6 @@ export default function GroupChat() {
     return (
         <main>
             <section>
-                <h1>Current group id : {groupId}</h1>
                 <div className='groupChat'>
                     <div className='commentInput'>
                         <label>
