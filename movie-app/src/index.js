@@ -22,6 +22,8 @@ import Search from './components/Search';
 // **New Import for Profile**
 import Profile from './pages/Profile';
 
+import ProfilePage from './pages/ProfilePage';
+import GroupChat from './pages/GroupChat';
 
 const router = createBrowserRouter([
  {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
+  },
+  {
+    path: "/users/:userId",
+    element: <ProfilePage />
   },
   {
     path: "/",
@@ -70,6 +76,10 @@ const router = createBrowserRouter([
   {
     path: "/community/group/:groupId/members",
     element: <GroupMembers />,
+  },
+  {
+    path: "/community/group/:groupId/chat",
+    element: <GroupChat />
   },
   // **New Route for Profile Page**
   {

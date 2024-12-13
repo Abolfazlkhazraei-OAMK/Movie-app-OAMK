@@ -126,3 +126,11 @@ CREATE TRIGGER trigger_delete_on_status_change
 AFTER UPDATE ON join_requests
 FOR EACH ROW
 EXECUTE FUNCTION delete_on_status_change();
+
+
+CREATE TABLE GroupMessages (
+    group_id INT,
+    user_id INT REFERENCES Users(user_id),
+    message_content VARCHAR(255) NOT NULL,
+    message_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
