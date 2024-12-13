@@ -1,10 +1,10 @@
-.search {
+.search-box {
     position: relative;
     width: 300px;
     height: 40px;
 }
 
-.search input {
+.search-box input {
     position: absolute;
     left: 0;
     top: 0;
@@ -19,11 +19,11 @@
     backdrop-filter: blur(10px);
 }
 
-.search input::placeholder {
+.search-box input::placeholder {
     color: #ffffff;
 }
 
-.search ion-icon {
+.search-box ion-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -31,4 +31,54 @@
     padding-right: 10px;
     color: white;
     border-right: 1px solid white;
+}
+
+.search-box input:focus {
+    border: 1px solid var(--primary);
+}
+
+.search-box input:focus+ion-icon {
+    color: var(--primary);
+}
+
+.search-container {
+    position: relative;
+    width: 300px;
+    margin: 20px 0;
+}
+
+.search-container ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #191919;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+    z-index: 1000;
+    max-width: 300px;
+}
+
+.search-container ul li {
+    list-style: none;
+    color: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-container ul li:hover {
+    background: var(--primary);
+}
+
+.search-container ul li button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
 }

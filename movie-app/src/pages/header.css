@@ -33,6 +33,18 @@ header.scrolled {
     display: flex;
 }
 
+.icon-profile {
+    color: white;
+    font-size: 24px;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icon-profile:hover {
+    color: var(--primary);
+}
+
 .menu {
     color: #ffffff;
     font-size: 2em;

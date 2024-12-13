@@ -13,16 +13,26 @@ const pool = new Pool({
     port: process.env.DB_PORT,
     ssl: {
         rejectUnauthorized: false
-    }
+    },
+    jwtSecret: process.env.JWT_SECRET
 });
 
-pool.connect()
-  .then(client => {
-    console.log('Connected to the database');
-    client.release();
-  })
-  .catch(err => {
-    console.error('Error connecting to database:', err.code, err.message);
-  });
+// pool.connect()
+//   .then(client => {
+//     console.log('Connected to the database');
+//     client.release();
+//   })
+//   .catch(err => {
+//     console.error('Error connecting to database:', err.code, err.message);
+//   });
+
+pool.on('connect', () => {
+  console.log('Connected to the database');
+})
+
+pool.on('error', (err) => {
+  console.error('Error connecting to database:', err);
+  process.exit(1);
+});
 
 export default pool;

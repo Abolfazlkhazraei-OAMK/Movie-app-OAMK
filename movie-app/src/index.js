@@ -15,6 +15,10 @@ import GroupCreate from './components/GroupCreate';
 import GroupDetails from './components/GroupDetails';
 import JoinRequests from './components/JoinRequests';
 import GroupMembers from './components/GroupMembers';
+//import Community from './components/Community';
+import GroupCreateComponent from './components/GroupCreate';
+import Search from './components/Search';
+
 // **New Import for Profile**
 import Profile from './pages/Profile';
 
@@ -42,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/movies/:id",
     element: <MovieDetail />,
+  },
+  {
+    path: "/search",
+    element: <Search />,
   },
   {
     path: "/showtime",
