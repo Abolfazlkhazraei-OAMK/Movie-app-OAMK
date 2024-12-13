@@ -18,6 +18,7 @@ import GroupMembers from './components/GroupMembers';
 //import Community from './components/Community';
 import GroupCreateComponent from './components/GroupCreate';
 import Search from './components/Search';
+import DeleteAccount from './components/deleteAccount.jsx';
 
 // **New Import for Profile**
 import Profile from './pages/Profile';
