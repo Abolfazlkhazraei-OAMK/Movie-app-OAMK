@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import XMLParser from "react-xml-parser";
 import './showtime.css';
 //import Card from "./Card";
@@ -12,7 +13,7 @@ function Showtime() {
   const [loading, setLoading] = useState(true);
   const [theatres, setTheatres] = useState([]);
   const [selectedTheatre, setSelectedTheatre] = useState("");
-    const [scroll, setScroll] = useState(0);
+  const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
     const fetchShowtimes = async () => {

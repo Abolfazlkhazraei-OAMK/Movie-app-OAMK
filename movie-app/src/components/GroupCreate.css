@@ -1,0 +1,314 @@
+.group-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+}
+
+.group-title, .section-title {
+  text-align: center;
+  color: white;
+}
+
+.create-group-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.create-group-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  animation: shimmer 8s infinite linear;
+  pointer-events: none;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, #f2f2f2, #FFE66D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  position: relative;
+}
+
+.group-input, .group-textarea {
+  background: rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+}
+
+.group-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.group-input:focus, .group-textarea:focus {
+  border-color: rgba(255, 107, 107, 0.5);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.create-button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #f54b4b, #ff1100);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  color: rgb(195, 191, 191);
+}
+
+.create-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.create-button:hover::before {
+  left: 100%;
+}
+
+.create-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+  background: linear-gradient(135deg, #FFE66D, #FF6B6B);
+}
+
+.error-message {
+  background: rgba(255, 0, 0, 0.1);
+  border-left: 4px solid #FF416C;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.groups-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px 0;
+}
+
+.group-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.group-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 0;
+}
+
+.group-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.group-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 10px 0;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.group-description {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 10px;
+  position: relative;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-button, .join-button, .manage-button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  border: 2px solid transparent;
+}
+
+.view-button {
+  background: linear-gradient(135deg, #ff0000, #f63b3b, #f60000);
+}
+
+.join-button {
+  background: linear-gradient(135deg, #8E2DE2, #4A00E0);
+}
+
+.join-button.pending {
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.join-button.pending:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.manage-button {
+  background: linear-gradient(135deg, #FF6B00, #FFA000);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.manage-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.manage-button:hover {
+  background: linear-gradient(135deg, #FFA000, #FF6B00);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+}
+
+.manage-button:hover::before {
+  left: 100%;
+}
+
+.view-button:hover {
+  background: linear-gradient(135deg, #91EAE4, #86A8E7, #7F7FD5);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(127, 127, 213, 0.4);
+}
+
+.join-button:hover {
+  background: linear-gradient(135deg, #4A00E0, #8E2DE2);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(142, 45, 226, 0.4);
+}
+
+.manage-button:hover {
+  background: linear-gradient(135deg, #FFA000, #FF6B00);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+}
+
+.view-group-button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #ff0000, #f84949);
+  color: white;
+  width: 100%;
+}
+
+.view-group-button:hover {
+  background: linear-gradient(135deg, #21CBF3, #2196F3);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+}
+
+.no-groups {
+  text-align: center;
+  color: white;
+  font-style: italic;
+}
