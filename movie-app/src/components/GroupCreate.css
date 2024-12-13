@@ -307,6 +307,24 @@
   box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
 }
 
+.enter-group-button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.30em;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #ff0000, #f84949);
+  color: white;
+}
+
+.enter-group-button:hover {
+  background: linear-gradient(135deg, #21CBF3, #2196F3);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+}
+
 .no-groups {
   text-align: center;
   color: white;

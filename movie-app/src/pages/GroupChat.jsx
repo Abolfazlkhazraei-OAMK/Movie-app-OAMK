@@ -38,11 +38,14 @@ export default function GroupChat() {
 
     const addMessage = () => {
         if(message === '') return
-        const user = JSON.parse(currentUser)
+        const user = currentUser
+        const headers = {
+            headers: { Authorization: `Bearer ${user.token}` },
+        }
         axios.post(`http://localhost:3001/messages/${groupId}/post`, {
             userId: user.id,
             message: message
-        })
+        }, headers)
         .then(response => {
             setMessages([...messages,{group_id: response.data.group_id,
                                       user_id: response.data.user_id,
@@ -80,8 +83,8 @@ export default function GroupChat() {
     return (
         <main>
             <section>
-                <h4 style={{textAlign: 'center'}}>{group.name}</h4>
-                <p>{group.description}</p>
+                <h4 style={{textAlign: 'center', color: 'white'}}>{group.name}</h4>
+                <p style={{textAlign: 'center', color: 'whitesmoke'}}>{group.description}</p>
                 <div className='groupChat'>
                     <div className='commentInput'>
                         <label>
