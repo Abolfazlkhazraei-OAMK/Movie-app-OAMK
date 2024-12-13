@@ -11,9 +11,10 @@ import ErrorPage from './pages/ErrorPage';
 import AllMovies from './components/AllMovies';
 import MovieDetail from './components/MovieDetail';
 import Showtime from './components/Showtime';
-//import Community from './components/Community';
-import GroupCreateComponent from './components/GroupCreate';
-
+import GroupCreate from './components/GroupCreate';
+import GroupDetails from './components/GroupDetails';
+import JoinRequests from './components/JoinRequests';
+import GroupMembers from './components/GroupMembers';
 // **New Import for Profile**
 import Profile from './pages/Profile';
 
@@ -48,7 +49,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/community",
-    element: <GroupCreateComponent />,
+    element: <GroupCreate/>
+  },
+  {
+    path: "/community/group/:groupId",
+    element: <GroupDetails />,
+  },
+  {
+    path: "/community/group/:groupId/requests",
+    element: <JoinRequests />,
+  },
+  {
+    path: "/community/group/:groupId/members",
+    element: <GroupMembers />,
   },
   // **New Route for Profile Page**
   {
