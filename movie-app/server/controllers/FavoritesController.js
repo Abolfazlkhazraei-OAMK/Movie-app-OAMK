@@ -10,7 +10,7 @@ const addFavorite = async (req, res, next) => {
         if (!movieId) return res.status(400).json({ message: 'Movie ID is required' });
 
         // Fetch movie details from the API
-        const movieResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.TMDB_ACCESS_TOKEN}`);
+        const movieResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.TMDB_API_KEY}`);
         const { title, poster_path } = movieResponse.data;
         const posterUrl = `https://image.tmdb.org/t/p/original${poster_path}`;
 

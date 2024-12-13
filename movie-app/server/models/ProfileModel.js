@@ -1,12 +1,21 @@
 import pool from '../helpers/db.js';
 
-const selectUserById = async (id) => {
-    return await pool.query('SELECT * FROM users WHERE user_id = $1', [id]);
+// Fetch user by email
+const selectUserByEmail = async (email) => {
+    return await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 };
 
-const removeUserById = async (id) => {
-    return await pool.query('DELETE FROM users WHERE user_id = $1', [id]);
+// Remove user by email
+const removeUserByEmail = async (email) => {
+    return await pool.query('DELETE FROM users WHERE email = $1', [email]);
 };
 
+// Update user's first and last name by email
+const updateUserByEmail = async (email, firstname, lastname) => {
+    return await pool.query(
+        'UPDATE users SET firstname = $1, lastname = $2 WHERE email = $3 RETURNING *',
+        [firstname, lastname, email]
+    );
+};
 
-export { selectUserById, removeUserById  };
+export { selectUserByEmail, removeUserByEmail, updateUserByEmail };

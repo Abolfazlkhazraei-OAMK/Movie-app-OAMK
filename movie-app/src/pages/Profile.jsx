@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import './profile.css';
 
 function Profile() {
@@ -8,8 +8,10 @@ function Profile() {
     const [error, setError] = useState(null); // Error state
     const [deleteError, setDeleteError] = useState(null); // Error state for deletion
     const [deleteSuccess, setDeleteSuccess] = useState(false); // Success state for deletion
+    const [editMode, setEditMode] = useState(false); // State to toggle edit mode
+    const [updatedProfile, setUpdatedProfile] = useState({ firstname: '', lastname: '' }); // State for updated profile
 
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    const navigate = useNavigate();
 
     useEffect(() => {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
@@ -19,7 +21,7 @@ function Profile() {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${userFromSession.token}`, // Pass the token
+                    Authorization: `Bearer ${userFromSession.token}`,
                 },
             })
                 .then((response) => {
@@ -30,6 +32,7 @@ function Profile() {
                 })
                 .then((data) => {
                     setProfileData(data);
+                    setUpdatedProfile({ firstname: data.firstname, lastname: data.lastname });
                     setLoading(false);
                 })
                 .catch((err) => {
@@ -44,13 +47,13 @@ function Profile() {
 
     const handleDeleteUser = () => {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
-
+    
         if (userFromSession && userFromSession.token) {
             fetch(`${process.env.REACT_APP_API_URL}/profile`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${userFromSession.token}`, // Pass the token
+                    Authorization: `Bearer ${userFromSession.token}`,
                 },
             })
                 .then((response) => {
@@ -60,19 +63,50 @@ function Profile() {
                     return response.json();
                 })
                 .then(() => {
-                    sessionStorage.removeItem('user'); // Remove user data from session storage
-                    setDeleteSuccess(true); // Set success state
-                    alert('Your profile has been successfully deleted!'); // Show success alert
-                    navigate('/'); // Redirect immediately after successful deletion
+                    sessionStorage.removeItem('user'); // Clear user data from session storage
+                    setDeleteSuccess(true);
+                    alert('Your profile has been successfully deleted!');
+                    navigate('/'); // Redirect to the home page
+                    setTimeout(() => {
+                        window.location.reload(); // Force page refresh after redirect
+                    }, 100);
                 })
                 .catch((err) => {
-                    setDeleteError(err.message); // Set error state for deletion
+                    setDeleteError(err.message);
+                });
+        }
+    };
+
+    const handleSaveProfile = () => {
+        const userFromSession = JSON.parse(sessionStorage.getItem('user'));
+    
+        if (userFromSession && userFromSession.token) {
+            fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${userFromSession.token}`,
+                },
+                body: JSON.stringify(updatedProfile),
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to update profile');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setProfileData(data);
+                    setEditMode(false);
+                    alert('Profile updated successfully!');
+                })
+                .catch((err) => {
+                    setError(err.message);
                 });
         }
     };
 
     if (loading) {
-        console.log('Loading profile data...'); // Debug log for loading state
         return (
             <div className="profile-container">
                 <p className="profile-loading">Loading your profile...</p>
@@ -81,7 +115,6 @@ function Profile() {
     }
 
     if (error) {
-        console.error('Error state:', error); // Debug log for error state
         return (
             <div className="profile-container">
                 <p className="profile-error">Error: {error}</p>
@@ -99,15 +132,57 @@ function Profile() {
 
     return (
         <div className="profile-container">
-            <h1 className="profile-title">Your Profile</h1>
-            <p className="profile-info">
-                <strong className="profile-label">First Name:</strong>
-                <span className="profile-value">{profileData.firstname}</span>
-            </p>
-            <p className="profile-info">
-                <strong className="profile-label">Last Name:</strong>
-                <span className="profile-value">{profileData.lastname}</span>
-            </p>
+            {/* Display Initials in a Circle */}
+            <div className="profile-initials">
+                {profileData.firstname && profileData.lastname ? (
+                    <div className="initials-circle">
+                        {profileData.firstname[0].toUpperCase()}{profileData.lastname[0].toUpperCase()}
+                    </div>
+                ) : (
+                    <div className="initials-circle">?</div>
+                )}
+            </div>
+
+            {/* Edit Mode */}
+            {editMode ? (
+                <>
+                    <p className="profile-info">
+                        <strong className="profile-label">First Name:</strong>
+                        <input
+                            className="profile-input"
+                            type="text"
+                            value={updatedProfile.firstname}
+                            onChange={(e) => setUpdatedProfile({ ...updatedProfile, firstname: e.target.value })}
+                        />
+                    </p>
+                    <p className="profile-info">
+                        <strong className="profile-label">Last Name:</strong>
+                        <input
+                            className="profile-input"
+                            type="text"
+                            value={updatedProfile.lastname}
+                            onChange={(e) => setUpdatedProfile({ ...updatedProfile, lastname: e.target.value })}
+                        />
+                    </p>
+                    <div className="buttons-container">
+                        <button className="save-button" onClick={handleSaveProfile}>Save</button>
+                        <button className="cancel-button" onClick={() => setEditMode(false)}>Cancel</button>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <p className="profile-info">
+                        <strong className="profile-label">First Name:</strong>
+                        <span className="profile-value">{profileData.firstname}</span>
+                    </p>
+                    <p className="profile-info">
+                        <strong className="profile-label">Last Name:</strong>
+                        <span className="profile-value">{profileData.lastname}</span>
+                    </p>
+                    <button className="edit-button" onClick={() => setEditMode(true)}>Edit Profile</button>
+                </>
+            )}
+
             <p className="profile-info">
                 <strong className="profile-label">Email:</strong>
                 <span className="profile-value">{profileData.email}</span>
@@ -121,12 +196,8 @@ function Profile() {
 
             {deleteError && <p className="profile-error">Error: {deleteError}</p>}
 
-            {/* Buttons Container */}
             <div className="buttons-container">
-                {/* Go Back Button */}
                 <button className="go-back-button" onClick={() => navigate(-1)}>Go Back</button>
-
-                {/* Delete Account Button */}
                 <button className="delete-account-button" onClick={handleDeleteUser}>Delete Account</button>
             </div>
         </div>

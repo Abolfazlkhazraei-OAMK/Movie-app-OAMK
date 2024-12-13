@@ -1,0 +1,12 @@
+###Post message
+POST http://localhost:3001/messages/128/post
+Content-Type: application/json
+
+{
+    "userId": 32,
+    "message": "Testing testing"
+}
+
+###Get messages
+GET http://localhost:3001/messages/128
+Content-Type: application/json

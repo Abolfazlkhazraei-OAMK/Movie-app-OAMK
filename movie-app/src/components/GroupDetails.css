@@ -1,0 +1,41 @@
+
+.group-details-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+}
+
+.group-details-title {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.group-details-description {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.members-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.members-title {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.member-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: white;
+}

@@ -27,10 +27,10 @@ const postRegistration = async(req,res,next) => {
 
         const user = userFromDb.rows[0]
         return res.status(201).json(createUserObject(
-            user.id,user.email, 
+            user.user_id,user.email, 
             user.firstName, 
             user.lastName, 
-            user.createdAt
+            user.created_at
         ))
     } catch (error) {
         return next(error)
@@ -62,12 +62,13 @@ const postLogin = async(req,res,next) => {
             return next(new ApiError(invalid_credentials_message, 401));
         }
         // const token = sign(req.body.email, process.env.JWT_SECRET_KEY)
-        const token = sign({ userId: user.user_id, email: user.email }, process.env.TMDB_ACCESS_TOKEN)
-        return res.status(200).json(createUserObject(user.id,user.email, user.firstname, user.lastname, user.createdAt, token))
+        const token = sign({userId:user.user_id,email:user.email}, process.env.JWT_SECRET)
+        return res.status(200).json(createUserObject(user.user_id, user.email, user.firstname, user.lastname, user.created_at, token))
     } catch (error) {
         return next(error)
     }
 }
+
 
 const deleteAccount = async (req, res, next) => {
     try {

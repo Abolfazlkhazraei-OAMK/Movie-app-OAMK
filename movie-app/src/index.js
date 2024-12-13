@@ -11,12 +11,19 @@ import ErrorPage from './pages/ErrorPage';
 import AllMovies from './components/AllMovies';
 import MovieDetail from './components/MovieDetail';
 import Showtime from './components/Showtime';
+import GroupCreate from './components/GroupCreate';
+import GroupDetails from './components/GroupDetails';
+import JoinRequests from './components/JoinRequests';
+import GroupMembers from './components/GroupMembers';
 //import Community from './components/Community';
 import GroupCreateComponent from './components/GroupCreate';
+import Search from './components/Search';
 
 // **New Import for Profile**
 import Profile from './pages/Profile';
 
+import ProfilePage from './pages/ProfilePage';
+import GroupChat from './pages/GroupChat';
 
 const router = createBrowserRouter([
  {
@@ -31,6 +38,10 @@ const router = createBrowserRouter([
     element: <SignUp />
   },
   {
+    path: "/users/:userId",
+    element: <ProfilePage />
+  },
+  {
     path: "/",
     element: <App />,
   },
@@ -43,12 +54,32 @@ const router = createBrowserRouter([
     element: <MovieDetail />,
   },
   {
+    path: "/search",
+    element: <Search />,
+  },
+  {
     path: "/showtime",
     element: <Showtime />,
   },
   {
     path: "/community",
-    element: <GroupCreateComponent />,
+    element: <GroupCreate/>
+  },
+  {
+    path: "/community/group/:groupId",
+    element: <GroupDetails />,
+  },
+  {
+    path: "/community/group/:groupId/requests",
+    element: <JoinRequests />,
+  },
+  {
+    path: "/community/group/:groupId/members",
+    element: <GroupMembers />,
+  },
+  {
+    path: "/community/group/:groupId/chat",
+    element: <GroupChat />
   },
   // **New Route for Profile Page**
   {

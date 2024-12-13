@@ -1,5 +1,5 @@
-import pool from "../helpers/db";
-import { ApiError } from "../helpers/ApiError";
+import pool from "../helpers/db.js";
+import { ApiError } from "../helpers/ApiError1.js";
 
 // Add a review for a movie
 const addReview = async (req, res, next) => {
