@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Cinema App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
+Cinema App is a web application designed for movie enthusiasts, offering features to explore movies, showtimes, and reviews. The application integrates open-source data from TMDB (The Movie Database) and Finnkino, providing detailed movie information and up-to-date showtimes in Finland. The goal was to create an intuitive and feature-rich platform where users can interact with cinema content, join movie discussion groups, and manage their favorite movies. This project was developed as part of the Advanced Web Applications course at Oulu University of Applied Sciences.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Key Features
+- **Responsive Design**: Seamless experience across devices.
+- **User Authentication**: Sign-up, Sign-in, and account management.
+- **Movie Search**: Advanced search with multiple filters and detailed movie view.
+- **Showtime Browsing**: Browse Finnkino showtimes.
+- **Group Discussions**: Create and manage collaborative movie discussion groups.
+- **Reviews and Ratings**: Submit and view movie reviews and ratings.
+- **Favorites List**: Create, manage, and share personalized favorite movie lists.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
+- **Frontend**: React.js
+- **Backend**: Node.js with Express.js
+- **Database**: PostgreSQL
+- **Data Sources**:
+  - TMDB API: For detailed movie information.
+  - Finnkino Open Data: For showtime data (XML format).
+- **Version Control**: GitHub for collaborative development.
+- **Deployment**: Hosted on a public server.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Team Members and Roles
+- **Abolfazl Khazraei**: Frontend development and UI design, backend development.
+- **Didarul Islam**: Database structure and backend development.
+- **Marek Letev**: Backend development.
+- **Rasmus Kaikkonen**: Frontend and backend development.
+- **Roshan Kandel**: Database management.
+- **Shane Widanalage**: Profile page development.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Architecture Overview
+### Application Architecture
+The application follows a client-server architecture:
+- **Frontend**: React handles the user interface and interacts with the backend via REST API.
+- **Backend**: Node.js and Express.js process API requests and manage business logic.
+- **Database**: PostgreSQL stores user data, reviews, and group information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Database Structure
+- **Users Table**: Stores user credentials and profiles.
+- **Reviews Table**: Stores user-submitted reviews, including ratings and timestamps.
+- **Groups Table**: Stores group data and membership information.
+- **Favorites Table**: Stores user’s favorite movies.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## User Interface Plan
+The UI design emphasizes simplicity and functionality. Key pages include:
+- **Homepage**: Displays trending movies and search functionality.
+- **Movie Details**: Comprehensive details for selected movies.
+- **Group Page**: Collaborative space for movie discussions.
+- **User Profile**: Displays user favorites and shared links.
+- **Login and Register Page**: Allows users to create accounts or log in.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How to Install and Use the Application
+### Prerequisites
+- Node.js (v16 or later)
+- PostgreSQL (v14 or later)
+- TMDB API Key (signup required at [TMDB](https://www.themoviedb.org/))
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/movie-enthusiast-app.git
+   cd movie-enthusiast-app
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up the PostgreSQL database using the provided schema.
+4. Add your TMDB API key to the `.env` file.
+5. Start the development server:
+   ```bash
+   npm run devStart
+   ```
+6. Start the application:
+   ```bash
+   npm run start
+   ```
+7. Access the application at [http://localhost:3000](http://localhost:3000).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Acknowledgements
+Special thanks to Oulu University of Applied Sciences for supporting this project and to the open-source community for the tools and APIs used.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

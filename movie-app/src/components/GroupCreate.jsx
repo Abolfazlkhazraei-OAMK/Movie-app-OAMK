@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createGroup, getAllGroups, addJoinRequest, getGroupMembers } from '../Api/groupApi';
 import './GroupCreate.css';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
+import BackToTopBtn from './BackToTopBtn';
 
 const GroupCreate = () => {
   const [name, setName] = useState('');
@@ -10,6 +13,7 @@ const GroupCreate = () => {
   const [error, setError] = useState('');
   const [userId, setUserId] = useState(null);
   const [membershipStatus, setMembershipStatus] = useState({});
+  const [scroll, setScroll] = useState(0);
 
   const user = JSON.parse(sessionStorage.getItem('user'));
 
@@ -120,6 +124,7 @@ const GroupCreate = () => {
       );
     }
 
+    
     return (
       <>
         <button className="join-button" onClick={() => handleJoin(group.group_id)}>
@@ -134,10 +139,20 @@ const GroupCreate = () => {
       </>
     );
   };
-
+    // constantly listens to the scroll position
+    useEffect(() => {
+      const handleScroll = () => {
+          setScroll(window.scrollY);
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+  }, []);
+  
   return (
+    <section>
     <div className="group-container">
-      <h1 className="group-title">Group Management</h1>
       <div className="create-group-section">
         <h2 className="section-title">Create Group</h2>
         {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
@@ -181,6 +196,10 @@ const GroupCreate = () => {
         )}
       </div>
     </div>
+      <Header scroll={scroll}/>
+      <BackToTopBtn scroll={scroll}/>
+      <Footer />
+    </section>
   );
 };
 

@@ -2,12 +2,16 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { getJoinRequests, handleJoinRequest } from '../Api/groupApi';
 import './JoinRequests.css';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
+import BackToTopBtn from './BackToTopBtn';
 
 const JoinRequests = () => {
   const { groupId } = useParams(); // Get groupId from URL
   const [requests, setRequests] = useState([]);
   const user = JSON.parse(sessionStorage.getItem('user'));
   const token = user?.token;
+  const [scroll, setScroll] = useState(0)
 
   const fetchJoinRequests = useCallback(async () => {
     if (!token || !groupId) return;
@@ -38,7 +42,19 @@ const JoinRequests = () => {
     }
   };
 
+  // constantly listens to the scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+
   return (
+    <section>
     <div className="requests-container">
       <h1 className="requests-title">Join Requests</h1>
       {requests.length === 0 ? (
@@ -74,6 +90,10 @@ const JoinRequests = () => {
         </div>
       )}
     </div>
+    <Header scroll={scroll}/>
+    <Footer />
+    <BackToTopBtn scroll={scroll}/>
+    </section>
   );
 };
 

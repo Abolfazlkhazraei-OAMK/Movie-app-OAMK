@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGroupMembers, removeMember, deleteGroup, getGroupById } from '../Api/groupApi';
 import './GroupMembers.css';
+import Header from '../pages/Header';
+import Footer from '../pages/Footer';
+import BackToTopBtn from './BackToTopBtn';
 
 const GroupMembers = () => {
   const { groupId } = useParams();
@@ -10,6 +13,7 @@ const GroupMembers = () => {
   const user = JSON.parse(sessionStorage.getItem('user'));
   const token = user?.token;
   const userId = user?.id;
+  const [scroll, setScroll] = useState(0)
 
   useEffect(() => {
     if (groupId && token) {
@@ -65,7 +69,19 @@ const GroupMembers = () => {
 
   const isOwner = group?.owner_id === userId;
 
+  // constantly listens to the scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+
   return (
+    <section>
     <div className="members-container">
       <h1 className="members-title">Group Members</h1>
       <div className="members-list">
@@ -109,6 +125,10 @@ const GroupMembers = () => {
         </button>
       )}
     </div>
+    <Header scroll={scroll} />
+    <Footer />
+    <BackToTopBtn scroll={scroll} />
+    </section>
   );
 };
 

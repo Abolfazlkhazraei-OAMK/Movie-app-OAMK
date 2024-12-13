@@ -3,6 +3,9 @@ import GroupChatMessage from "../components/GroupChatMessage";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { getGroupById } from '../Api/groupApi';
+import Header from './Header';
+import BackToTopBtn from '../components/BackToTopBtn';
+import Footer from './Footer';
 
 export default function GroupChat() {
     const { groupId } = useParams();
@@ -10,6 +13,7 @@ export default function GroupChat() {
     const currentUser = JSON.parse(sessionStorage.getItem('user'))
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
+    const [scroll, setScroll] = useState(0)
 
     useEffect(() => {
         axios.get(`http://localhost:3001/messages/${groupId}`)
@@ -62,6 +66,17 @@ export default function GroupChat() {
         setMessage('')
     }
 
+    // constantly listens to the scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            setScroll(window.scrollY);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <main>
             <section>
@@ -96,6 +111,9 @@ export default function GroupChat() {
                         }
                     </div>
                 </div>
+                <Header scroll={scroll} />
+                <BackToTopBtn scroll={scroll} />
+                <Footer />
             </section>
         </main>
     )

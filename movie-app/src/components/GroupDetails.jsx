@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGroupById, getGroupMembers } from '../Api/groupApi';
 import './GroupDetails.css';
+import Header from '../pages/Header';
+import BackToTopBtn from './BackToTopBtn';
 
 const GroupDetails = () => {
   const { groupId } = useParams();
@@ -9,6 +11,7 @@ const GroupDetails = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [scroll, setScroll] = useState(0);
   const user = JSON.parse(sessionStorage.getItem('user'));
   const token = user?.token;
 
@@ -35,10 +38,22 @@ const GroupDetails = () => {
     }
   };
 
+  // constantly listens to the scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+        setScroll(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+    };
+}, []);
+
   if (loading) return <div className="group-details-container">Loading...</div>;
   if (error) return <div className="group-details-container">{error}</div>;
 
   return (
+    <section>
     <div className="group-details-container">
       <h1 className="group-details-title">{group?.name || 'Group Name'}</h1>
       <div className="group-details-description">
@@ -57,6 +72,9 @@ const GroupDetails = () => {
         )}
       </div>
     </div>
+    <Header scroll={scroll}/>
+    <BackToTopBtn scroll={scroll}/>
+    </section>
   );
 };
 

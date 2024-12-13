@@ -9,8 +9,6 @@ function Community() {
     const [newReviews, setNewReviews] = useState('');
     const [scroll, setScroll] = useState(0);
     const id = 550; // Movie ID for Fight Club
-    const token = sessionStorage.getItem('token');
-    const userId = sessionStorage.getItem('userId');
 
     
 
@@ -93,18 +91,6 @@ function Community() {
         <Header scroll={scroll} />
         <Footer />
         <BackToTopBtn scroll={scroll} />
-        <Router>
-            <Routes>
-                {/* Route for creating groups and listing them */}
-                <Route path="/" element={<GroupCreate token={token} />} />
-
-                {/* Route for owner dashboard */}
-                <Route path="/owner/:groupId" element={<OwnerDashboard token={token} />} />
-
-                {/* Route for viewing group details */}
-                <Route path="/group/:groupId" element={<GroupDetails token={token} userId={userId} />} />
-            </Routes>
-        </Router>
     </section>
   )
 }

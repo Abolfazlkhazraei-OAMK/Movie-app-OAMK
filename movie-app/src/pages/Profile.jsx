@@ -17,7 +17,7 @@ function Profile() {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
 
         if (userFromSession && userFromSession.token) {
-            fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+            fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ function Profile() {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
     
         if (userFromSession && userFromSession.token) {
-            fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+            fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function Profile() {
         const userFromSession = JSON.parse(sessionStorage.getItem('user'));
     
         if (userFromSession && userFromSession.token) {
-            fetch(`${process.env.REACT_APP_API_URL}/profile`, {
+            fetch(`${process.env.REACT_APP_API_URL}/api/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
