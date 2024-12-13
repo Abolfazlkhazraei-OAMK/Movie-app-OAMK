@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import GroupChatMessage from "../components/GroupChatMessage";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { getGroupById } from '../Api/groupApi';
 
 export default function GroupChat() {
     const { groupId } = useParams();
-    const [group, setGroup] = useState()
-    const currentUser = sessionStorage.getItem('user')
+    const [group, setGroup] = useState({})
+    const currentUser = JSON.parse(sessionStorage.getItem('user'))
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
 
@@ -19,7 +20,17 @@ export default function GroupChat() {
             .catch(error => {
                 alert(error)
             })
+        fetchGroupData(currentUser.token)
     }, [groupId])
+
+    const fetchGroupData = async (userToken) => {
+        try {
+            const data = await getGroupById(userToken, groupId)
+            setGroup(data)
+        } catch (error) {
+            alert(error)
+        }
+    }
 
     const addMessage = () => {
         if(message === '') return
@@ -54,6 +65,8 @@ export default function GroupChat() {
     return (
         <main>
             <section>
+                <h4 style={{textAlign: 'center'}}>{group.name}</h4>
+                <p>{group.description}</p>
                 <div className='groupChat'>
                     <div className='commentInput'>
                         <label>

@@ -103,12 +103,20 @@ const GroupCreate = () => {
   const renderGroupButton = (group) => {
     if (group.owner_id === userId || membershipStatus[group.group_id]) {
       return (
-        <button
-          className="view-group-button"
-          onClick={() => window.location.href = `/community/group/${group.group_id}/members`}
-        >
-          View Group
-        </button>
+        <>
+          <button
+            className='enter-group-button'
+            onClick={() => window.location.href = `/community/group/${group.group_id}/chat`}
+          >
+            Enter Chat
+          </button>
+          <button
+            className="view-group-button"
+            onClick={() => window.location.href = `/community/group/${group.group_id}/members`}
+          >
+            View Group
+          </button>
+        </>
       );
     }
 

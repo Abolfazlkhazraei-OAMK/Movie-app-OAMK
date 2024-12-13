@@ -38,10 +38,6 @@ const router = createBrowserRouter([
     element: <SignUp />
   },
   {
-    path: "/groups/:groupId",
-    element: <GroupChat />
-  },
-  {
     path: "/users/:userId",
     element: <ProfilePage />
   },
@@ -80,6 +76,10 @@ const router = createBrowserRouter([
   {
     path: "/community/group/:groupId/members",
     element: <GroupMembers />,
+  },
+  {
+    path: "/community/group/:groupId/chat",
+    element: <GroupChat />
   },
   // **New Route for Profile Page**
   {

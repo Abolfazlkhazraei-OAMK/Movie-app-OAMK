@@ -8,7 +8,7 @@ const messageRouter = Router()
 messageRouter.get('/messages/:groupId',(req,res,next) => {
     getMessages(req,res,next)
 })
-messageRouter.post('/messages/:groupId/post',(req,res,next) => {
+messageRouter.post('/messages/:groupId/post',auth,(req,res,next) => {
     postMessage(req,res,next)
 })
 
