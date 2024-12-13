@@ -13,7 +13,7 @@ const getUserProfile = async (req, res, next) => {
         const token = authHeader.split(' ')[1];
         let decoded;
         try {
-            decoded = jwt.verify(token, process.env.TMDB_ACCESS_TOKEN);
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
         } catch (err) {
             return res.status(401).json({ error: 'Invalid token. Please log in again.' });
         }
@@ -50,7 +50,7 @@ const deleteUser = async (req, res, next) => {
         const token = authHeader.split(' ')[1];
         let decoded;
         try {
-            decoded = jwt.verify(token, process.env.TMDB_ACCESS_TOKEN);
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
         } catch (err) {
             return res.status(401).json({ error: 'Invalid token. Please log in again.' });
         }
@@ -81,7 +81,7 @@ const updateUserProfile = async (req, res, next) => {
         const token = authHeader.split(' ')[1];
         let decoded;
         try {
-            decoded = jwt.verify(token, process.env.TMDB_ACCESS_TOKEN);
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
         } catch (err) {
             return res.status(401).json({ error: 'Invalid token. Please log in again.' });
         }
