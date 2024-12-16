@@ -72,8 +72,8 @@ The UI design emphasizes simplicity and functionality. Key pages include:
 ### Installation Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/movie-enthusiast-app.git
-   cd movie-enthusiast-app
+   https://github.com/Abolfazlkhazraei-OAMK/Movie-app-OAMK.git
+   cd movie-app
    ```
 2. Install dependencies:
    ```bash
