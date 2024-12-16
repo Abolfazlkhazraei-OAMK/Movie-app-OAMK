@@ -74,6 +74,7 @@ The UI design emphasizes simplicity and functionality. Key pages include:
    ```bash
    https://github.com/Abolfazlkhazraei-OAMK/Movie-app-OAMK.git
    cd movie-app
+   cd server
    ```
 2. Install dependencies:
    ```bash
