@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { response } from "express";
 import jwt from "jsonwebtoken";
-const {sign} = jwt
 import dotenv from 'dotenv';
+const {sign} = jwt
 dotenv.config({path: "./.env"});
 
 
@@ -13,7 +13,7 @@ describe('POST login', () => {
     const password = 'test1234'
 
     it ('should login with valid credentials', async() => {
-        const response = await fetch(base_url + '/user/login', {
+        const response = await fetch(base_url + 'api/user/login', {
             method: 'post',
             headers: {
                 'Content-Type':'application/json',
@@ -33,7 +33,7 @@ describe('POST register',() => {
         const lastname = "test"
         const email = 'register13@foo.com'
         const password = 'register123'
-        const response = await fetch(base_url + '/user/register', {
+        const response = await fetch(base_url + 'api/user/register', {
             method: 'post',
             headers: {
                 'Content-Type':'application/json'
@@ -51,12 +51,12 @@ describe('POST delete', () => {
     it ('should delete a user', async() => {
         const email = 'register13@foo.com'
         const password = 'register123'
-        if (!process.env.TMDB_ACCESS_TOKEN) {
-            throw new Error('TMDB_ACCESS_TOKEN is not defined');
+        if (!process.env.JWT_SECRET) {
+            throw new Error('JWT_SECRET is not defined');
         }
         // const token = sign(email, process.env.TMDB_ACCESS_TOKEN)
-        const token = jwt.sign({ email }, process.env.TMDB_ACCESS_TOKEN)
-        const response = await fetch(base_url + '/user/delete-account', {
+        const token = jwt.sign({ email }, process.env.JWT_SECRET)
+        const response = await fetch(base_url + 'api/user/delete-account', {
             method: 'delete',
             headers: {
                 'Content-Type':'application/json',
